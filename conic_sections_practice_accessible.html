@@ -1,0 +1,2046 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="default">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conic Sections: Reference and Practice</title>
+  <meta name="description" content="Complete accessible conversion of the three-page Conic Sections reference and one-page practice worksheet." />
+  <script>
+    window.MathJax = {
+      loader: { load: ['a11y/assistive-mml'] },
+      tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']], processEscapes: true },
+      options: { enableMenu: true, menuOptions: { settings: { assistiveMml: true } } },
+      startup: { typeset: true }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  <style>
+    :root {
+      --font-scale: 1;
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --radius-sm: 10px;
+      --shadow-soft: 0 20px 55px rgba(15, 23, 42, .16);
+      --shadow-small: 0 8px 20px rgba(15, 23, 42, .12);
+      --space: clamp(1rem, 2.2vw, 1.6rem);
+      --page-max: 1180px;
+      --focus: #ffbf47;
+    }
+
+    html[data-theme="default"] {
+      --bg: #edf4ff;
+      --bg2: #f8fbff;
+      --panel: rgba(255, 255, 255, .94);
+      --card: #ffffff;
+      --card2: #f7fbff;
+      --text: #122033;
+      --muted: #50627a;
+      --heading: #092746;
+      --accent: #0b65c2;
+      --accent2: #b35a00;
+      --accent3: #007c73;
+      --line: #cad8e8;
+      --grid: #dbe7f4;
+      --axis: #23374f;
+      --curve: #af274d;
+      --curve2: #005bbb;
+      --asym: #9a3412;
+      --guide: #087f5b;
+      --button-text: #ffffff;
+      --hero-grad: linear-gradient(135deg, #092746 0%, #0b65c2 58%, #00a39b 100%);
+    }
+
+    html[data-theme="paper"] {
+      --bg: #f5efe4;
+      --bg2: #fff9ee;
+      --panel: rgba(255, 253, 247, .96);
+      --card: #fffdf7;
+      --card2: #fff7e6;
+      --text: #24190e;
+      --muted: #614e3b;
+      --heading: #3a2411;
+      --accent: #8f4a0b;
+      --accent2: #234f68;
+      --accent3: #647500;
+      --line: #decaa9;
+      --grid: #e7d6ba;
+      --axis: #3a2411;
+      --curve: #923454;
+      --curve2: #0d4f68;
+      --asym: #8b3d16;
+      --guide: #6e7500;
+      --button-text: #ffffff;
+      --hero-grad: linear-gradient(135deg, #3a2411 0%, #8f4a0b 65%, #c28b2c 100%);
+    }
+
+    html[data-theme="dark"] {
+      --bg: #07111f;
+      --bg2: #0e1b2d;
+      --panel: rgba(18, 30, 48, .96);
+      --card: #122033;
+      --card2: #0d1728;
+      --text: #f3f8ff;
+      --muted: #bdd0e5;
+      --heading: #ffffff;
+      --accent: #66d9ff;
+      --accent2: #ffcf70;
+      --accent3: #92f2c3;
+      --line: #34506e;
+      --grid: #243850;
+      --axis: #e8f3ff;
+      --curve: #ff83a8;
+      --curve2: #82b6ff;
+      --asym: #ffb86b;
+      --guide: #78e6b6;
+      --button-text: #07111f;
+      --hero-grad: linear-gradient(135deg, #07111f 0%, #17385e 58%, #24536a 100%);
+      --shadow-soft: 0 20px 55px rgba(0, 0, 0, .34);
+      --shadow-small: 0 8px 20px rgba(0, 0, 0, .26);
+    }
+
+    html[data-theme="contrast"] {
+      --bg: #000000;
+      --bg2: #000000;
+      --panel: #000000;
+      --card: #050505;
+      --card2: #111111;
+      --text: #ffffff;
+      --muted: #ffffff;
+      --heading: #ffffff;
+      --accent: #ffff00;
+      --accent2: #00ffff;
+      --accent3: #ff99ff;
+      --line: #ffffff;
+      --grid: #777777;
+      --axis: #ffffff;
+      --curve: #ffff00;
+      --curve2: #00ffff;
+      --asym: #ff99ff;
+      --guide: #00ff99;
+      --button-text: #000000;
+      --hero-grad: linear-gradient(135deg, #000000 0%, #262600 50%, #003333 100%);
+      --shadow-soft: none;
+      --shadow-small: none;
+      --focus: #ffffff;
+    }
+
+    html[data-theme="ocean"] {
+      --bg: #e8fbfa;
+      --bg2: #f7ffff;
+      --panel: rgba(255, 255, 255, .94);
+      --card: #ffffff;
+      --card2: #effdfc;
+      --text: #062728;
+      --muted: #365e60;
+      --heading: #003c44;
+      --accent: #007f91;
+      --accent2: #8c4b00;
+      --accent3: #315fb2;
+      --line: #b9dfe0;
+      --grid: #d1eeef;
+      --axis: #073c42;
+      --curve: #0066cc;
+      --curve2: #a23b72;
+      --asym: #a14f00;
+      --guide: #006b5b;
+      --button-text: #ffffff;
+      --hero-grad: linear-gradient(135deg, #003c44 0%, #007f91 55%, #37c4b2 100%);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 20% 0%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 30rem),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: calc(18px * var(--font-scale));
+      line-height: 1.58;
+      overflow-x: hidden;
+    }
+
+    a { color: var(--accent); }
+    a:hover { text-decoration-thickness: .16em; }
+    :focus-visible { outline: 4px solid var(--focus); outline-offset: 3px; border-radius: 8px; }
+
+    .skip-link {
+      position: absolute;
+      top: .5rem;
+      left: .5rem;
+      transform: translateY(-150%);
+      background: var(--accent);
+      color: var(--button-text);
+      padding: .75rem 1rem;
+      border-radius: var(--radius-sm);
+      z-index: 999;
+      font-weight: 800;
+    }
+    .skip-link:focus { transform: translateY(0); }
+
+    .sr-only {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+
+    .shell {
+      width: min(var(--page-max), calc(100% - 1.2rem));
+      margin: 0 auto;
+      padding: 1rem 0 4rem;
+      min-width: 0;
+    }
+
+    .hero {
+      color: #fff;
+      background: var(--hero-grad);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      padding: clamp(1.25rem, 4vw, 3rem);
+      margin: 1rem 0 1.2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -12rem -15rem auto;
+      width: 34rem;
+      height: 34rem;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .14);
+      pointer-events: none;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-size: .84em;
+      color: rgba(255, 255, 255, .92);
+    }
+    .hero h1 {
+      margin: .45rem 0 .75rem;
+      font-size: clamp(2rem, 5vw, 4rem);
+      line-height: 1.03;
+      letter-spacing: 0;
+    }
+    .hero p { max-width: 74ch; margin: .6rem 0; color: rgba(255, 255, 255, .94); }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: .8rem;
+      margin-top: 1.2rem;
+      position: relative;
+      z-index: 1;
+    }
+    .mini-stat {
+      background: rgba(255, 255, 255, .13);
+      border: 1px solid rgba(255, 255, 255, .3);
+      border-radius: var(--radius-md);
+      padding: .8rem;
+      min-height: 100%;
+    }
+    .mini-stat strong {
+      display: block;
+      font-size: 1.35em;
+      line-height: 1.1;
+    }
+    .mini-stat span { display: block; color: rgba(255, 255, 255, .88); font-size: .88em; }
+
+    .toolbar {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: .75rem;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-small);
+      padding: .85rem;
+      margin: 1rem 0;
+    }
+    .voice-header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(220px, .42fr);
+      gap: .7rem;
+      align-items: stretch;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-small);
+      padding: .7rem;
+      margin: 1rem 0;
+      position: sticky;
+      top: .35rem;
+      z-index: 40;
+      backdrop-filter: blur(14px);
+    }
+    .voice-header-main {
+      display: grid;
+      gap: .5rem;
+      min-width: 0;
+    }
+    .voice-title-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: .75rem;
+      min-width: 0;
+    }
+    .voice-title-row h2 {
+      margin: 0;
+      font-size: clamp(1.05rem, 2vw, 1.3rem);
+      line-height: 1.15;
+    }
+    .tool-field label,
+    .check-row span:first-child {
+      display: block;
+      font-size: .78em;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--muted);
+      margin-bottom: .25rem;
+    }
+    select, button, input[type="checkbox"] {
+      font: inherit;
+    }
+    select {
+      width: 100%;
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: var(--text);
+      border-radius: 12px;
+      padding: .65rem .8rem;
+      min-height: 46px;
+    }
+    .check-row {
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      border: 1px solid var(--line);
+      background: var(--card);
+      border-radius: 12px;
+      padding: .55rem .75rem;
+      min-height: 46px;
+      margin-top: 1.58rem;
+    }
+    .check-row input { inline-size: 1.2rem; block-size: 1.2rem; accent-color: var(--accent); }
+
+    .reader-panel {
+      display: grid;
+      gap: .85rem;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-small);
+      padding: clamp(.9rem, 2.4vw, 1.25rem);
+      margin: 1rem 0;
+    }
+    .reader-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: start;
+    }
+    .reader-header h2 {
+      margin: 0 0 .25rem;
+      font-size: clamp(1.35rem, 2.4vw, 1.8rem);
+    }
+    .reader-header p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 72ch;
+    }
+    .reader-progress {
+      min-width: 8rem;
+      text-align: right;
+      color: var(--heading);
+      font-weight: 850;
+    }
+    .reader-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(240px, .7fr);
+      gap: .85rem;
+      align-items: start;
+    }
+    .reader-button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      min-width: 0;
+    }
+    .reader-button-row .small-button { white-space: nowrap; }
+    .label-short { display: none; }
+    .reader-options {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .7rem;
+    }
+    .reader-status {
+      border: 1px solid color-mix(in srgb, var(--accent) 28%, var(--line));
+      background: color-mix(in srgb, var(--accent) 8%, var(--card));
+      border-radius: var(--radius-md);
+      padding: .65rem .75rem;
+      min-height: 100%;
+      min-width: 0;
+    }
+    .reader-status strong {
+      display: block;
+      color: var(--heading);
+      margin-bottom: .15rem;
+    }
+    .reader-current-text {
+      display: block;
+      color: var(--text);
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .reader-warning {
+      margin: 0;
+      padding: .8rem;
+      border: 1px solid color-mix(in srgb, var(--accent2) 35%, var(--line));
+      background: color-mix(in srgb, var(--accent2) 10%, var(--card));
+      border-radius: var(--radius-md);
+      color: var(--text);
+    }
+    .is-reading {
+      outline: 4px solid var(--focus);
+      outline-offset: 5px;
+      border-radius: var(--radius-sm);
+      scroll-margin-top: 10rem;
+    }
+    button:disabled,
+    select:disabled {
+      cursor: not-allowed;
+      opacity: .62;
+    }
+
+    nav.toc {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: var(--space);
+      box-shadow: var(--shadow-small);
+      margin: 1rem 0;
+    }
+    nav.toc h2 { margin-top: 0; }
+    .toc-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: .65rem;
+    }
+    .toc-list a {
+      display: block;
+      text-decoration: none;
+      background: var(--card2);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: .8rem;
+      color: var(--text);
+      font-weight: 750;
+      min-height: 100%;
+    }
+    .toc-list a:hover { border-color: var(--accent); }
+
+    main { display: block; }
+    section.card,
+    article.example-card,
+    .exercise-card,
+    .callout,
+    .source-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: clamp(1rem, 3vw, 2rem);
+      box-shadow: var(--shadow-small);
+      margin: 1rem 0;
+    }
+    h2, h3, h4 { color: var(--heading); line-height: 1.15; }
+    h2 { font-size: clamp(1.65rem, 3.1vw, 2.4rem); margin: 0 0 .75rem; }
+    h3 { font-size: clamp(1.3rem, 2.2vw, 1.75rem); margin: 1.1rem 0 .6rem; }
+    h4 { font-size: 1.1em; margin-bottom: .35rem; }
+    p { margin: .6rem 0; }
+
+    .name-date {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .75rem;
+      margin-top: 1rem;
+    }
+    .line-field {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: .8rem;
+      min-height: 54px;
+    }
+    .line-field strong { color: var(--heading); }
+
+    .math-display {
+      margin: 1rem 0;
+      padding: 1rem;
+      border-radius: var(--radius-md);
+      background: var(--card2);
+      border: 1px solid var(--line);
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      color: var(--heading);
+      text-align: center;
+    }
+
+    .tag-row { display: flex; flex-wrap: wrap; gap: .45rem; margin: .65rem 0 0; }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      background: color-mix(in srgb, var(--accent) 12%, var(--card));
+      color: var(--heading);
+      border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--line));
+      border-radius: 999px;
+      padding: .25rem .65rem;
+      font-size: .84em;
+      font-weight: 750;
+    }
+
+    .example-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, .95fr);
+      gap: 1rem;
+      align-items: start;
+    }
+    .example-grid > *,
+    .lab-grid > *,
+    .feature-grid > *,
+    .exercises-grid > *,
+    .toolbar > *,
+    .voice-header > * {
+      min-width: 0;
+    }
+    .step-list {
+      counter-reset: steps;
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0;
+      display: grid;
+      gap: .75rem;
+    }
+    .step-list li {
+      counter-increment: steps;
+      position: relative;
+      padding: .85rem .9rem .85rem 3.15rem;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+    }
+    .step-list li::before {
+      content: counter(steps);
+      position: absolute;
+      left: .75rem;
+      top: .75rem;
+      width: 1.8rem;
+      height: 1.8rem;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--accent);
+      color: var(--button-text);
+      font-weight: 900;
+    }
+
+    .graph-panel {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: .85rem;
+      position: sticky;
+      top: 7.2rem;
+      min-width: 0;
+    }
+    .graph-panel h3 { margin-top: .2rem; }
+    .step-buttons {
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
+      margin: .7rem 0;
+    }
+    .step-buttons button,
+    .small-button {
+      border: 1px solid color-mix(in srgb, var(--accent) 45%, var(--line));
+      background: var(--card2);
+      color: var(--heading);
+      border-radius: 999px;
+      padding: .55rem .85rem;
+      cursor: pointer;
+      font-weight: 800;
+      min-height: 42px;
+    }
+    .step-buttons button[aria-pressed="true"],
+    .small-button.primary {
+      background: var(--accent);
+      color: var(--button-text);
+      border-color: var(--accent);
+    }
+    .small-button { border-radius: var(--radius-sm); }
+
+    figure {
+      margin: .75rem 0 0;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .graph-svg {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: var(--radius-md);
+      background: var(--card2);
+      border: 1px solid var(--line);
+    }
+    .graph-caption {
+      font-size: .92em;
+      color: var(--muted);
+      margin: .55rem 0 0;
+    }
+    .graph-description {
+      display: none;
+      margin-top: .75rem;
+      padding: .8rem;
+      border-left: 5px solid var(--accent3);
+      background: color-mix(in srgb, var(--accent3) 9%, var(--card));
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    }
+    html.show-descriptions .graph-description { display: block; }
+    .live-note {
+      min-height: 3.8rem;
+      padding: .75rem;
+      background: color-mix(in srgb, var(--accent) 8%, var(--card));
+      border: 1px solid color-mix(in srgb, var(--accent) 25%, var(--line));
+      border-radius: var(--radius-md);
+      color: var(--text);
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: .65rem;
+      margin: 1rem 0;
+    }
+    .feature {
+      background: var(--card2);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: .8rem;
+    }
+    .feature strong {
+      display: block;
+      color: var(--heading);
+      font-size: 1.15em;
+    }
+    .feature span { color: var(--muted); font-size: .9em; }
+
+    .exercises-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .8rem;
+      margin: 1rem 0;
+    }
+    .exercise-card {
+      margin: 0;
+      padding: 1rem;
+      background: var(--card);
+    }
+    .answer-space {
+      min-height: 7rem;
+      margin-top: .7rem;
+      border: 2px dashed var(--line);
+      border-radius: var(--radius-md);
+      background: linear-gradient(180deg, transparent 0 34px, color-mix(in srgb, var(--line) 50%, transparent) 35px, transparent 36px);
+      background-size: 100% 36px;
+    }
+
+    details {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--card);
+      padding: .8rem 1rem;
+      margin: .75rem 0;
+    }
+    details summary {
+      cursor: pointer;
+      font-weight: 850;
+      color: var(--heading);
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 1rem 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 650px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+    th, td {
+      padding: .8rem;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: color-mix(in srgb, var(--accent) 11%, var(--card)); color: var(--heading); }
+    tr:last-child td { border-bottom: 0; }
+
+    .callout {
+      background: color-mix(in srgb, var(--accent2) 9%, var(--panel));
+      border-color: color-mix(in srgb, var(--accent2) 35%, var(--line));
+      box-shadow: none;
+    }
+    .callout strong { color: var(--heading); }
+
+    .lab-grid {
+      display: grid;
+      grid-template-columns: 300px minmax(0, 1fr);
+      gap: 1rem;
+      align-items: start;
+    }
+    .lab-controls {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 1rem;
+    }
+    .lab-controls label { font-weight: 850; display: block; margin-bottom: .35rem; color: var(--heading); }
+
+    footer {
+      margin-top: 2rem;
+      color: var(--muted);
+      font-size: .92em;
+    }
+
+    .top-link { display: inline-block; margin-top: 1rem; font-weight: 850; }
+
+    .grid-line { stroke: var(--grid); stroke-width: 1; }
+    .axis-line { stroke: var(--axis); stroke-width: 2; }
+    .tick-label { fill: var(--axis); font-size: 13px; font-family: system-ui, sans-serif; }
+    .curve-line { fill: none; stroke: var(--curve); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+    .curve-line.second { stroke: var(--curve2); }
+    .asym-line { stroke: var(--asym); stroke-width: 2.5; stroke-dasharray: 8 7; }
+    .guide-line { stroke: var(--guide); stroke-width: 2.5; stroke-dasharray: 5 6; }
+    .guide-label { fill: var(--guide); font-size: 14px; font-weight: 800; }
+
+    @media (max-width: 920px) {
+      .hero-grid, .toolbar, .toc-list, .feature-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .voice-header { grid-template-columns: 1fr; }
+      .reader-layout { grid-template-columns: 1fr; }
+      .example-grid, .lab-grid { grid-template-columns: 1fr; }
+      .graph-panel { position: static; }
+    }
+    @media (max-width: 620px) {
+      body { font-size: calc(16px * var(--font-scale)); }
+      .shell { width: min(100% - .7rem, var(--page-max)); }
+      .hero-grid, .toolbar, .toc-list, .feature-grid, .exercises-grid, .name-date { grid-template-columns: 1fr; }
+      .toolbar,
+      .reader-panel {
+        padding: .65rem;
+        border-radius: 16px;
+      }
+      .check-row { margin-top: 0; }
+      .voice-header {
+        top: 0;
+        border-radius: 0 0 16px 16px;
+        margin: .5rem -.35rem 1rem;
+        padding: .45rem;
+        gap: .45rem;
+      }
+      .voice-title-row { align-items: center; }
+      .voice-title-row h2 { font-size: 1rem; }
+      .reader-header { display: grid; }
+      .reader-progress {
+        min-width: auto;
+        text-align: right;
+        font-size: .85em;
+      }
+      .reader-options { grid-template-columns: 1fr; }
+      .reader-button-row {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: .15rem;
+        scrollbar-width: thin;
+      }
+      .reader-button-row .small-button { flex: 0 0 auto; }
+      .reader-button-row .small-button {
+        min-height: 38px;
+        padding: .42rem .58rem;
+        font-size: .92em;
+      }
+      .label-full { display: none; }
+      .label-short { display: inline; }
+      .reader-status {
+        padding: .45rem .55rem;
+        font-size: .9em;
+        max-height: 5.1rem;
+        overflow-y: auto;
+      }
+      .reader-current-text { white-space: normal; }
+      .hero {
+        border-radius: 18px;
+        padding: 1rem;
+      }
+      .hero h1 { font-size: clamp(1.75rem, 9vw, 2.45rem); }
+      section.card,
+      article.example-card,
+      .exercise-card,
+      .callout,
+      .source-card {
+        padding: .9rem;
+        border-radius: 16px;
+      }
+      .math-display { padding: .75rem; }
+      .step-list li { padding: .75rem .75rem .75rem 2.75rem; }
+      .step-list li::before {
+        left: .65rem;
+        top: .72rem;
+        width: 1.55rem;
+        height: 1.55rem;
+      }
+      .graph-panel { padding: .65rem; border-radius: 16px; }
+      .graph-svg { min-width: 620px; }
+      .answer-space { min-height: 5rem; }
+      .step-buttons button { flex: 1 1 42%; }
+    }
+    @media (max-width: 420px) {
+      .shell { width: min(100% - .45rem, var(--page-max)); }
+      .voice-header { margin-left: -.225rem; margin-right: -.225rem; }
+      .reader-status { max-height: 4.5rem; }
+      .graph-svg { min-width: 560px; }
+      table { min-width: 560px; }
+    }
+
+    @media print {
+      body { background: #fff; color: #000; font-size: 12pt; }
+      .toolbar, .voice-header, .reader-panel, .toc, .skip-link, .small-button, .step-buttons { display: none !important; }
+      .hero, section.card, article.example-card, .exercise-card, .callout, .source-card, .graph-panel {
+        box-shadow: none; border: 1px solid #777; break-inside: avoid; background: #fff; color: #000;
+      }
+      .hero { color: #000; }
+      .example-grid { grid-template-columns: 1fr; }
+      .graph-description { display: block; border-left-color: #000; }
+      a::after { content: " (" attr(href) ")"; font-size: .85em; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+    }
+  
+
+    .diagram-svg .diagram-shape {
+      fill: color-mix(in srgb, var(--accent) 9%, var(--card2));
+      stroke: var(--axis);
+      stroke-width: 4;
+    }
+    .diagram-svg .diagram-water {
+      fill: color-mix(in srgb, var(--curve2) 18%, transparent);
+      stroke: color-mix(in srgb, var(--curve2) 80%, var(--axis));
+      stroke-width: 3;
+    }
+    .diagram-svg .diagram-constant {
+      stroke: var(--accent2);
+      stroke-width: 5;
+      fill: none;
+    }
+    .diagram-svg .diagram-variable {
+      stroke: var(--curve2);
+      stroke-width: 5;
+      fill: none;
+    }
+    .diagram-svg .diagram-dash {
+      stroke-dasharray: 12 10;
+    }
+    .diagram-svg .diagram-light {
+      stroke: var(--line);
+      stroke-width: 4;
+      fill: none;
+    }
+    .diagram-svg .diagram-label {
+      fill: var(--axis);
+      font-size: 26px;
+      font-weight: 850;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    .diagram-svg .diagram-label.small {
+      font-size: 20px;
+      font-weight: 750;
+    }
+    .diagram-svg .diagram-car {
+      fill: color-mix(in srgb, var(--curve2) 28%, var(--card));
+      stroke: var(--curve2);
+      stroke-width: 3;
+    }
+    .diagram-svg .diagram-police {
+      fill: color-mix(in srgb, var(--accent2) 24%, var(--card));
+      stroke: var(--accent2);
+      stroke-width: 3;
+    }
+    .problem-statement {
+      font-size: 1.08em;
+      color: var(--heading);
+      font-weight: 650;
+    }
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: .7rem;
+      margin-top: 1rem;
+    }
+    .process-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: .85rem;
+    }
+    .process-card strong {
+      display: block;
+      color: var(--heading);
+      margin-bottom: .25rem;
+    }
+    .formula-list {
+      display: grid;
+      gap: .65rem;
+      margin: .7rem 0;
+    }
+    .formula-list .math-display {
+      margin: 0;
+    }
+    @media (max-width: 920px) {
+      .process-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 620px) {
+      .process-grid { grid-template-columns: 1fr; }
+      .problem-statement { font-size: 1em; }
+    }
+
+  </style>
+
+    <style id="linear-approximations-mobile-fix">
+      .formula-list,
+      .formula-list .math-display,
+      .step-list li,
+      .example-grid > *,
+      .process-grid > * {
+        min-width: 0;
+      }
+      .formula-list .math-display {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+      }
+      .math-display > mjx-container {
+        max-width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+      }
+      @media (max-width: 620px) {
+        .example-grid,
+        .process-grid {
+          grid-template-columns: minmax(0, 1fr);
+        }
+        .formula-list {
+          width: 100%;
+          max-width: 100%;
+        }
+      }
+    </style>
+
+    <style id="arithmetic-handout-layout">
+      html { max-width: 100%; overflow-x: clip; }
+      body { max-width: 100%; overflow-x: clip; overflow-y: visible; }
+      .source-page { border-top: .3rem solid var(--accent); }
+      .page-marker {
+        display: inline-block;
+        margin-bottom: .75rem;
+        padding: .28rem .6rem;
+        color: var(--heading);
+        background: var(--card2);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-sm);
+        font-size: .88rem;
+        font-weight: 800;
+      }
+      .math-display {
+        min-width: 0;
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+      }
+      .math-display > mjx-container {
+        max-width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+      }
+      .definition-box,
+      .worked-box {
+        margin: 1rem 0;
+        padding: 1rem;
+        background: var(--card2);
+        border: 1px solid var(--line);
+        border-left: .35rem solid var(--accent);
+        border-radius: var(--radius-md);
+      }
+      .definition-box h3,
+      .worked-box h3 { margin-top: 0; }
+      .topic-jump {
+        display: flex;
+        flex-wrap: wrap;
+        gap: .55rem;
+        margin: .8rem 0 1rem;
+      }
+      .topic-jump a {
+        display: inline-block;
+        padding: .55rem .7rem;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-sm);
+        background: var(--card2);
+        font-weight: 800;
+      }
+      .table-wrap { overflow-x: auto; }
+      .place-table {
+        width: 100%;
+        min-width: 34rem;
+        border-collapse: collapse;
+        margin: .75rem 0 1rem;
+      }
+      .place-table caption {
+        padding: .55rem;
+        color: var(--heading);
+        font-weight: 850;
+        text-align: left;
+      }
+      .place-table th,
+      .place-table td {
+        padding: .55rem .65rem;
+        border: 1px solid var(--line);
+        text-align: left;
+      }
+      .place-table th { background: var(--card2); }
+      .formula-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: .75rem;
+      }
+      .formula-grid > * { min-width: 0; }
+      .problem-list > li { margin: 1rem 0 1.25rem; }
+      .subparts { margin-top: .45rem; }
+      .subparts > li { margin: .65rem 0; }
+      .answer-line {
+        margin: .35rem 0 .7rem;
+        padding: .55rem .7rem;
+        background: var(--card2);
+        border-left: .3rem solid var(--accent2);
+        border-radius: var(--radius-sm);
+        font-weight: 800;
+      }
+      .pizza-figure { margin: 1rem 0; }
+      .pizza-svg {
+        display: block;
+        width: min(100%, 52rem);
+        height: auto;
+        margin: 0 auto;
+      }
+      .pizza-slice { stroke: var(--axis); stroke-width: 3; }
+      .pizza-shaded { fill: var(--curve2); opacity: .72; }
+      .pizza-open { fill: var(--card); }
+      .pizza-label { fill: var(--heading); font-size: 20px; font-weight: 800; }
+      .calculation-note {
+        margin: .65rem 0;
+        padding: .7rem;
+        border-left: .3rem solid var(--accent2);
+        background: var(--card2);
+      }
+      @media (max-width: 720px) {
+        .formula-grid { grid-template-columns: minmax(0, 1fr); }
+        .place-table { min-width: 31rem; }
+      }
+      @media print {
+        .source-page { break-inside: auto; }
+        .worked-box, .definition-box, .pizza-figure { break-inside: avoid; }
+      }
+    </style>
+
+    <style id="graphing-linear-layout">
+      html { max-width: 100%; overflow-x: clip; }
+      body { max-width: 100%; overflow-x: clip; overflow-y: visible; }
+      .topic-card { border-top: .3rem solid var(--accent); }
+      .definition-box, .worked-example, .answer-card, .method-box, .correction-note {
+        margin: 1rem 0;
+        padding: 1rem;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        background: var(--card2);
+      }
+      .definition-box, .method-box, .worked-example { border-left: .35rem solid var(--accent); }
+      .answer-card { border-left: .35rem solid var(--accent2); }
+      .correction-note { border-left: .35rem solid #b45309; }
+      .definition-box h3, .worked-example h3, .answer-card h3, .method-box h3 { margin-top: 0; }
+      .math-display { min-width: 0; width: 100%; max-width: 100%; overflow-x: auto; overflow-y: hidden; }
+      .math-display > mjx-container { max-width: 100%; overflow-x: auto; overflow-y: hidden; }
+      .graph-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin: 1rem 0; }
+      .problem-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .85rem; margin: 1rem 0; }
+      .problem-card { min-width: 0; padding: 1rem; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--card2); }
+      .problem-card h3 { margin: 0 0 .5rem; font-size: 1.08rem; }
+      .coordinate-figure { margin: .8rem 0 0; padding: .6rem; border: 1px solid var(--line); border-radius: var(--radius-sm); background: #fff; color: #13233a; }
+      .coordinate-figure svg { display: block; width: 100%; height: auto; aspect-ratio: 13 / 10; }
+      .coordinate-figure figcaption { margin-top: .45rem; color: #293f5f; font-size: .92rem; line-height: 1.45; }
+      .diagram-description { margin: .45rem 0 0; padding: .55rem .65rem; border-left: .25rem solid var(--accent); background: #eef6ff; color: #13233a; }
+      .answer-space { margin-top: .75rem; border-bottom: 2px solid var(--line); }
+      .work-row { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: .8rem; align-items: center; padding: .65rem 0; border-top: 1px solid var(--line); }
+      .work-row:first-of-type { border-top: 0; }
+      .work-row p, .work-row .math-display { margin: 0; }
+      .movement-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; margin: .75rem 0; }
+      .movement-card { padding: .8rem; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--card); }
+      .movement-card h4 { margin: 0 0 .4rem; color: var(--heading); }
+      .topic-jump { display: flex; flex-wrap: wrap; gap: .55rem; margin: .8rem 0 1rem; }
+      .topic-jump a { display: inline-block; padding: .55rem .7rem; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--card2); font-weight: 800; }
+      .final-answer { font-weight: 900; color: var(--heading); }
+      .source-label { display: inline-block; margin: 0 0 .7rem; padding: .3rem .6rem; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--card2); color: var(--heading); font-size: .88rem; font-weight: 800; }
+      .compact-list li { margin: .45rem 0; }
+      @media (max-width: 760px) {
+        .graph-grid, .problem-grid, .movement-grid, .work-row { grid-template-columns: minmax(0, 1fr); }
+        .coordinate-figure { padding: .35rem; }
+      }
+      @media print {
+        .definition-box, .worked-example, .answer-card, .method-box, .problem-card, .coordinate-figure { break-inside: avoid; }
+      }
+    </style>
+
+    <style id="systems-linear-layout">
+      :root { --focus: #0759b5; }
+      html[data-theme="paper"] { --focus: #744000; }
+      html[data-theme="dark"] { --focus: #ffd166; }
+      html[data-theme="contrast"] { --focus: #ffffff; }
+      html[data-theme="ocean"] { --focus: #004f5a; }
+      html[data-theme="default"] { --hero-grad: linear-gradient(135deg, #092746 0%, #0759b5 58%, #00766f 100%); }
+      html[data-theme="paper"] { --hero-grad: linear-gradient(135deg, #3a2411 0%, #7a3d08 65%, #805610 100%); }
+      html[data-theme="ocean"] { --hero-grad: linear-gradient(135deg, #003c44 0%, #006b79 55%, #006c60 100%); }
+      .hero::after { background: rgba(255, 255, 255, .08); }
+      .hero .eyebrow, .hero > p, .mini-stat span { color: #ffffff; }
+      .mini-stat { background: rgba(5, 28, 69, .34); border-color: rgba(255, 255, 255, .48); }
+      .type-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem; margin: .85rem 0; }
+      .type-card { padding: .8rem; border-top: .25rem solid var(--accent); background: transparent; }
+      .type-card h3 { margin-top: 0; }
+      .system-display { margin: .65rem 0; }
+      .system-display .math-display { margin: 0; }
+      .method-banner { margin: .8rem 0; padding: .8rem; border: 2px solid var(--accent); border-radius: var(--radius-sm); background: var(--card2); }
+      .classification { display: inline-block; margin: .4rem 0; padding: .35rem .65rem; border-radius: var(--radius-sm); background: #e8f2ff; color: #17385f; font-weight: 900; }
+      .system-figure { margin: .8rem 0 0; padding: .6rem; border: 1px solid var(--line); border-radius: var(--radius-sm); background: #fff; color: #13233a; }
+      .system-figure svg { display: block; width: 100%; height: auto; aspect-ratio: 13 / 10; }
+      .system-figure figcaption { margin-top: .45rem; color: #293f5f; font-size: .92rem; line-height: 1.45; }
+      .line-key { display: flex; flex-wrap: wrap; gap: 1rem; margin: .45rem 0 0; color: #233b5b; font-weight: 800; }
+      .line-key span::before { content: ""; display: inline-block; width: 1.7rem; height: .22rem; margin-right: .35rem; vertical-align: middle; background: #5530d8; }
+      .line-key span:last-child::before { background: #d43c6b; }
+      .verification { margin-top: .55rem; padding: .55rem .7rem; border-left: .25rem solid #138a62; background: #edf9f4; }
+      .source-identity { margin: 0 0 1rem; padding: .7rem .8rem; border-left: .35rem solid var(--accent2); background: var(--card2); color: var(--heading); }
+      .source-identity strong, .source-identity span { display: block; }
+      .source-identity span { margin-top: .2rem; }
+      .solution-type-figures { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem; margin: 1rem 0; }
+      .solution-type-figures .system-figure { min-width: 0; }
+      .enhancement-label { display: inline-block; margin: .4rem 0 .65rem; padding: .28rem .55rem; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--card2); color: var(--heading); font-size: .88rem; font-weight: 850; }
+      .source-answer-list li { margin: .55rem 0; }
+      .vertical-equation .math-display { padding-top: .9rem; padding-bottom: .9rem; }
+      .worked-example, .definition-box, .method-box { border-top: 0; border-right: 0; border-bottom: 0; border-radius: 0; background: transparent; }
+      .diagram-description { display: none; }
+      html.show-descriptions .diagram-description { display: block; }
+      @media (max-width: 760px) {
+        .type-grid, .solution-type-figures { grid-template-columns: minmax(0, 1fr); }
+      }
+      @media (max-width: 620px) {
+        .voice-header { margin-left: 0; margin-right: 0; padding: .7rem; }
+        .reader-button-row { flex-wrap: wrap; overflow: visible; padding: .25rem; gap: .45rem; }
+        .reader-button-row .small-button { flex: 1 1 calc(50% - .45rem); min-width: 0; white-space: normal; }
+        .label-full { display: inline; }
+        .label-short { display: none; }
+      }
+      @media (max-width: 340px) {
+        .reader-button-row .small-button { flex-basis: 100%; }
+      }
+      @media print { .type-card, .system-figure { break-inside: avoid; } }
+    </style>
+
+    <style id="complex-numbers-layout">
+      .source-page-identity {
+        margin: 1.15rem 0 .8rem;
+        padding: .72rem .85rem;
+        border-left: .35rem solid var(--accent2);
+        background: var(--card2);
+        color: var(--heading);
+      }
+      .source-page-identity strong, .source-page-identity span { display: block; }
+      .source-page-identity .source-page-number {
+        margin-bottom: .22rem;
+        font-size: .84rem;
+        font-weight: 850;
+        text-transform: uppercase;
+      }
+      .definition-panel, .procedure-panel {
+        margin: 1rem 0;
+        padding: 1rem;
+        border: 2px solid var(--accent);
+        border-radius: var(--radius-sm);
+        background: transparent;
+      }
+      .definition-panel section + section, .procedure-panel section + section {
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--line);
+      }
+      .definition-panel h3, .procedure-panel h3 { margin-top: 0; }
+      .worked-example { border-left-color: var(--accent2); }
+      .worked-example .source-note {
+        margin: .45rem 0;
+        padding: .5rem .65rem;
+        border-left: .25rem solid var(--accent);
+        background: var(--card);
+      }
+      .source-answer-list { padding-left: 1.5rem; }
+      .source-answer-list li { margin: .72rem 0; }
+      .source-answer-list .math-display { margin: .25rem 0; }
+      .final-answer {
+        margin-top: .65rem;
+        padding: .62rem .72rem;
+        border-left: .3rem solid var(--accent2);
+        background: var(--card);
+        color: var(--heading);
+        font-weight: 850;
+      }
+      .math-inline { display: inline-block; max-width: 100%; vertical-align: baseline; }
+      .complex-plane {
+        margin: 1rem 0 0;
+        padding: .75rem;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-sm);
+        background: #ffffff;
+        color: #13233a;
+      }
+      .complex-plane svg { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; }
+      .complex-plane figcaption { margin-top: .45rem; color: #293f5f; font-size: .92rem; line-height: 1.45; }
+      .complex-plane .diagram-description {
+        margin: .55rem 0 0;
+        padding: .6rem .7rem;
+        border-left: .25rem solid #0759b5;
+        background: #eef6ff;
+        color: #13233a;
+      }
+      .source-content > .source-page-identity:first-child { margin-top: 0; }
+      .page-continuation { margin: .2rem 0 .8rem; color: var(--muted); font-weight: 800; }
+      @media (max-width: 620px) {
+        .definition-panel, .procedure-panel, .worked-example, .answer-card, .problem-card { padding: .78rem; }
+      }
+      @media (max-width: 480px) {
+        .complex-plane { padding: .35rem; }
+        .complex-plane svg { aspect-ratio: 4 / 3; }
+      }
+      @media print {
+        .definition-panel, .procedure-panel, .worked-example, .answer-card, .problem-card, .complex-plane { break-inside: avoid; }
+      }
+    </style>
+
+    <style id="conic-sections-layout">
+      .source-page-identity {
+        margin: 1.2rem 0 .85rem;
+        padding: .72rem .85rem;
+        border-left: .35rem solid var(--accent2);
+        background: var(--card2);
+        color: var(--heading);
+      }
+      .source-page-identity strong, .source-page-identity span { display: block; }
+      .source-page-identity .source-page-number {
+        margin-bottom: .2rem;
+        font-size: .84rem;
+        font-weight: 850;
+        text-transform: uppercase;
+      }
+      .definition-panel, .equation-panel, .answer-card, .problem-card {
+        min-width: 0;
+        margin: 1rem 0;
+        padding: 1rem;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-sm);
+        background: var(--card2);
+      }
+      .definition-panel, .equation-panel { border-left: .35rem solid var(--accent); }
+      .answer-card { border-left: .35rem solid var(--accent2); }
+      .definition-panel h3, .equation-panel h3, .answer-card h3, .problem-card h3 { margin-top: 0; }
+      .reference-table-wrap {
+        max-width: 100%;
+        overflow-x: auto;
+        margin: 1rem 0;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-sm);
+        background: var(--card2);
+      }
+      .reference-table { width: 100%; min-width: 880px; border-collapse: collapse; }
+      .reference-table caption {
+        padding: .85rem;
+        color: var(--heading);
+        font-size: 1.08rem;
+        font-weight: 900;
+        text-align: left;
+      }
+      .reference-table th, .reference-table td {
+        padding: .75rem;
+        border: 1px solid var(--line);
+        vertical-align: top;
+      }
+      .reference-table th { background: var(--card); color: var(--heading); }
+      .reference-table .equation-cell { width: 30%; }
+      .reference-table .figure-cell { width: 35%; }
+      .reference-table .math-display { margin: .4rem 0; }
+      .figure-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin: 1rem 0; }
+      .conic-figure {
+        min-width: 0;
+        margin: .85rem 0 0;
+        padding: .7rem;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-sm);
+        background: #ffffff;
+        color: #13233a;
+      }
+      .conic-figure svg { display: block; width: 100%; height: auto; aspect-ratio: 18 / 11; }
+      .conic-figure.compact svg { aspect-ratio: 4 / 3; }
+      .conic-figure figcaption { margin-top: .5rem; color: #293f5f; font-size: .92rem; line-height: 1.45; }
+      .diagram-description {
+        margin: .55rem 0 0;
+        padding: .65rem .72rem;
+        border-left: .25rem solid #0759b5;
+        background: #eef6ff;
+        color: #13233a;
+      }
+      .problem-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .9rem; margin: 1rem 0; }
+      .problem-card { margin: 0; }
+      .answer-card { margin: 1rem 0; }
+      .answer-card .source-answer {
+        margin: .65rem 0;
+        padding: .65rem .75rem;
+        border-left: .3rem solid var(--accent2);
+        background: var(--card);
+        color: var(--heading);
+        font-weight: 900;
+      }
+      .video-marker {
+        display: inline-block;
+        margin: .35rem 0;
+        padding: .24rem .46rem;
+        border: 2px solid #665600;
+        border-radius: .2rem;
+        background: #fff06a;
+        color: #292300;
+        font-weight: 900;
+      }
+      .graph-details {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: .5rem .85rem;
+        margin: .8rem 0 0;
+      }
+      .graph-details div { min-width: 0; padding: .55rem .65rem; border: 1px solid var(--line); background: var(--card); }
+      .graph-details dt { color: var(--heading); font-weight: 900; }
+      .graph-details dd { margin: .25rem 0 0; }
+      .graph-details .math-inline { max-width: 100%; overflow-x: auto; }
+      .math-inline { display: inline-block; max-width: 100%; vertical-align: baseline; }
+      .math-display { min-width: 0; max-width: 100%; overflow-x: auto; overflow-y: hidden; }
+      .graph-workspace { min-height: 10rem; }
+      .source-content > .source-page-identity:first-child { margin-top: 0; }
+      .source-note { color: var(--muted); font-weight: 750; }
+      @media (max-width: 760px) {
+        .figure-grid, .problem-grid, .graph-details { grid-template-columns: minmax(0, 1fr); }
+        .conic-figure { padding: .4rem; }
+      }
+      @media (max-width: 480px) {
+        .definition-panel, .equation-panel, .answer-card, .problem-card { padding: .76rem; }
+        .conic-figure svg, .conic-figure.compact svg { aspect-ratio: 4 / 3; }
+      }
+      @media print {
+        .definition-panel, .equation-panel, .answer-card, .problem-card, .conic-figure { break-inside: avoid; }
+        .reference-table-wrap { overflow: visible; }
+        .reference-table { min-width: 0; }
+      }
+    </style>
+</head>
+
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<div class="shell" id="top">
+  <header class="hero" role="banner">
+    <div class="eyebrow" data-read="SMC STEM Beginning and Intermediate Algebra Module.">SMC STEM Beginning and Intermediate Algebra Module</div>
+    <h1 data-read="Conic Sections: Reference and Practice.">Conic Sections: Reference and Practice</h1>
+    <p data-read="Complete accessible conversion of both practice-page PDFs: three reference pages followed by the ten-question worksheet, with all formulas, diagrams, and directions retained.">Complete accessible conversion of both practice-page PDFs: three reference pages followed by the ten-question worksheet, with all formulas, diagrams, and directions retained.</p>
+    <div class="name-date" aria-label="Student information fields">
+      <div class="line-field" data-read="Name field."><strong>Name:</strong> ______________________________</div>
+      <div class="line-field" data-read="Date field."><strong>Date:</strong> ______________________________</div>
+    </div>
+    <div class="hero-grid" aria-label="Handout accessibility features"><div class="mini-stat" data-read="4 source pages"><strong>4</strong><span>source pages</span></div><div class="mini-stat" data-read="7 reference diagrams"><strong>7</strong><span>reference diagrams</span></div><div class="mini-stat" data-read="10 practice problems"><strong>10</strong><span>practice problems</span></div><div class="mini-stat" data-read="ADA friendly structure"><strong>ADA</strong><span>friendly structure</span></div></div>
+  </header>
+
+  <aside class="voice-header" aria-labelledby="reader-heading">
+    <div class="voice-header-main">
+      <div class="voice-title-row">
+        <h2 id="reader-heading">Read aloud</h2>
+        <div class="reader-progress" aria-hidden="true"><span id="readerProgressText">Line 0 of 0</span></div>
+      </div>
+      <div class="reader-button-row" role="group" aria-label="Read aloud controls" aria-describedby="reader-help">
+        <button class="small-button primary" id="readAllButton" type="button" aria-label="Read from start: read the handout from the beginning"><span class="label-full">Read from start</span><span class="label-short" aria-hidden="true">Start</span></button>
+        <button class="small-button" id="readSectionButton" type="button" aria-label="Read current section: read from the section currently visible on screen"><span class="label-full">Read current section</span><span class="label-short" aria-hidden="true">Current</span></button>
+        <button class="small-button" id="previousLineButton" type="button" aria-label="Previous line: read the previous line"><span class="label-full">Previous line</span><span class="label-short" aria-hidden="true">Previous</span></button>
+        <button class="small-button" id="nextLineButton" type="button" aria-label="Next line: read the next line"><span class="label-full">Next line</span><span class="label-short" aria-hidden="true">Next</span></button>
+        <button class="small-button" id="pauseButton" type="button" aria-label="Pause: pause read aloud" disabled>Pause</button>
+      </div>
+    </div>
+    <div class="reader-status" role="status" aria-live="polite" aria-atomic="true">
+      <strong id="readerStatusLabel">Ready to read.</strong>
+      <span class="reader-current-text" id="readerCurrentText">Choose Read from start or Read current section.</span>
+    </div>
+  </aside>
+
+  <aside class="toolbar" aria-label="Display controls">
+    <div class="tool-field"><label for="themeSelect">Choose theme</label><select id="themeSelect"><option value="default">Default SMC Blue</option><option value="paper">Warm Paper</option><option value="dark">Dark Study</option><option value="contrast">High Contrast</option><option value="ocean">Ocean Calm</option></select></div>
+    <div class="tool-field"><label for="fontSelect">Text size</label><select id="fontSelect"><option value="1">Standard</option><option value="1.08">Comfort</option><option value="1.18">Large</option><option value="1.30">Extra large</option></select></div>
+    <label class="check-row" for="descToggle"><input type="checkbox" id="descToggle" /><span><span>Diagram descriptions</span><span>Show below diagrams</span></span></label>
+    <div class="tool-field"><label for="printButton">Print or save</label><button class="small-button primary" id="printButton" type="button">Print handout</button></div>
+  </aside>
+
+  <aside class="reader-panel" aria-labelledby="reader-settings-heading">
+    <div class="reader-header"><div><h2 id="reader-settings-heading">Voice settings</h2><p id="reader-help">The voice reader uses explicit algebra wording so slopes, intercepts, ordered pairs, and equation steps are spoken clearly.</p></div></div>
+    <div class="reader-options"><div class="tool-field"><label for="voiceSelect">Voice</label><select id="voiceSelect" aria-label="Voice: choose a read aloud voice"><option value="">Browser default voice</option></select></div><div class="tool-field"><label for="voiceRate">Reading speed</label><select id="voiceRate" aria-label="Reading speed: choose read aloud speed"><option value="0.82">Slower</option><option value="0.9" selected>Clear</option><option value="1">Standard</option><option value="1.08">Slightly faster</option></select></div></div>
+    <p class="reader-warning" id="speechSupportNotice" hidden>Your browser does not appear to support built-in speech playback. The handout remains usable with screen readers, visible text, MathJax math, and diagram descriptions.</p>
+  </aside>
+
+  <nav class="toc" aria-label="Table of contents"><h2 data-read="Contents.">Contents</h2><ol class="toc-list"><li><a href="#overview" data-read="Overview">Overview</a></li><li><a href="#reference-handout" data-read="Reference handout">Reference handout</a></li><li><a href="#practice-worksheet" data-read="Practice worksheet">Practice worksheet</a></li></ol></nav>
+  <main id="main-content" tabindex="-1"><section class="card" id="overview" aria-labelledby="overview-heading">
+  <h2 id="overview-heading" data-read="Conic Sections Reference and Practice">Conic Sections Reference and Practice</h2>
+  <p data-read="This handout preserves the complete three-page conic reference first and the complete one-page practice worksheet second, matching the current Canvas order. Every definition, formula, table entry, diagram, direction, and problem is retained.">This handout preserves the complete three-page conic reference first and the complete one-page practice worksheet second, matching the current Canvas order. Every definition, formula, table entry, diagram, direction, and problem is retained.</p>
+  <div class="topic-jump" aria-label="Jump to a topic"><a href="#reference-handout">Reference handout</a><a href="#practice-worksheet">Practice worksheet</a></div>
+  <div class="callout" role="note" data-read="The read aloud feature is off until Read from start or Read current section is selected."><strong>Read aloud:</strong> Speech is off until you select <em>Read from start</em> or <em>Read current section</em>.</div>
+</section><article class="exercise-card topic-card source-content" id="reference-handout" aria-labelledby="reference-heading">
+  <div class="source-page-identity" role="note" data-source-file="Notes_for_Conics.pdf" data-source-page="1" data-read="Source page 1 of Notes_for_Conics.pdf. Conic Sections (or Conics): Parabola.">
+  <span class="source-page-number">Notes_for_Conics.pdf - source page 1</span>
+  <strong>Conic Sections (or Conics): Parabola</strong>
+</div>
+  <h2 id="reference-heading" data-read="Conic Sections (or Conics)">Conic Sections (or Conics)</h2>
+  <section class="definition-panel" aria-labelledby="parabola-heading">
+    <h3 id="parabola-heading" data-read="PARABOLA">PARABOLA</h3>
+    <p data-read="A parabola is the set of all points in a plane equidistant from a fixed point F (the focus) and a fixed line l (the directrix).">A parabola is the set of all points in a plane equidistant from a fixed point F (the focus) and a fixed line l (the directrix).</p>
+  </section>
+  <div class="reference-table-wrap" role="region" aria-label="Parabolas with vertex V of h comma k table" tabindex="0">
+  <table class="reference-table">
+    <caption>Parabolas with Vertex <span class="math-inline" role="math" aria-label="V of h comma k">\(V(h,k)\)</span></caption>
+    <thead><tr><th scope="col">Equation, focus, directrix</th><th scope="col">Graph for <span class="math-inline" role="math" aria-label="p greater than zero">\(p&gt;0\)</span></th><th scope="col">Graph for <span class="math-inline" role="math" aria-label="p less than zero">\(p&lt;0\)</span></th></tr></thead>
+    <tbody>
+      <tr><th scope="row" class="equation-cell"><strong>Vertical axis</strong><div class="math-display" role="math" aria-label="the quantity x minus h squared equals four p times the quantity y minus k" data-read="the quantity x minus h squared equals four p times the quantity y minus k">\[ (x-h)^2=4p(y-k) \]</div><p data-read="or">or</p><div class="math-display" role="math" aria-label="y equals a x squared plus b x plus c, where p equals one over four a" data-read="y equals a x squared plus b x plus c, where p equals one over four a">\[ y=ax^2+bx+c,\qquad p=\frac{1}{4a} \]</div><div class="math-display" role="math" aria-label="focus F at h comma k plus p" data-read="focus F at h comma k plus p">\[ F(h,k+p) \]</div><div class="math-display" role="math" aria-label="directrix y equals k minus p" data-read="directrix y equals k minus p">\[ y=k-p \]</div></th><td class="figure-cell"><figure class="conic-figure compact" aria-labelledby="parabola-vertical-positive-caption" aria-describedby="parabola-vertical-positive-long" data-read="A upward-opening parabola with vertex V of h comma k. The focus lies one distance positive p from the vertex on the vertical axis, and the directrix is the horizontal line the same distance on the opposite side.">
+  <svg viewBox="0 0 720 420" role="img" aria-labelledby="parabola-vertical-positive-title parabola-vertical-positive-desc" xmlns="http://www.w3.org/2000/svg">
+    <title id="parabola-vertical-positive-title">Vertical-axis parabola for p positive</title>
+    <desc id="parabola-vertical-positive-desc">A upward-opening parabola with vertex V of h comma k. The focus lies one distance positive p from the vertex on the vertical axis, and the directrix is the horizontal line the same distance on the opposite side.</desc>
+    <style>.plot-bg{fill:#fff;stroke:#94a8c0;stroke-width:2}.grid{stroke:#d9e2ec;stroke-width:1}.axis{stroke:#22354f;stroke-width:2.4}.curve{fill:none;stroke:#c43d31;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.guide{stroke:#a4317a;stroke-width:2.2;stroke-dasharray:8 7}.point{fill:#0759b5;stroke:#fff;stroke-width:2}.tick{font:14px system-ui,sans-serif;fill:#364b68}.annotation{font:700 16px system-ui,sans-serif;fill:#20334f}</style>
+    <defs><clipPath id="parabola-vertical-positive-clip"><rect x="62.0" y="34.0" width="620.0" height="340.0"/></clipPath></defs>
+    <rect x="62.0" y="34.0" width="620.0" height="340.0" class="plot-bg"/>
+    <g><line x1="62.00" y1="34.0" x2="62.00" y2="374.0" class="grid"/><line x1="139.50" y1="34.0" x2="139.50" y2="374.0" class="grid"/><line x1="217.00" y1="34.0" x2="217.00" y2="374.0" class="grid"/><line x1="294.50" y1="34.0" x2="294.50" y2="374.0" class="grid"/><line x1="372.00" y1="34.0" x2="372.00" y2="374.0" class="axis"/><line x1="449.50" y1="34.0" x2="449.50" y2="374.0" class="grid"/><line x1="527.00" y1="34.0" x2="527.00" y2="374.0" class="grid"/><line x1="604.50" y1="34.0" x2="604.50" y2="374.0" class="grid"/><line x1="682.00" y1="34.0" x2="682.00" y2="374.0" class="grid"/><line x1="62.0" y1="374.00" x2="682.0" y2="374.00" class="grid"/><line x1="62.0" y1="331.50" x2="682.0" y2="331.50" class="grid"/><line x1="62.0" y1="289.00" x2="682.0" y2="289.00" class="grid"/><line x1="62.0" y1="246.50" x2="682.0" y2="246.50" class="axis"/><line x1="62.0" y1="204.00" x2="682.0" y2="204.00" class="grid"/><line x1="62.0" y1="161.50" x2="682.0" y2="161.50" class="grid"/><line x1="62.0" y1="119.00" x2="682.0" y2="119.00" class="grid"/><line x1="62.0" y1="76.50" x2="682.0" y2="76.50" class="grid"/><line x1="62.0" y1="34.00" x2="682.0" y2="34.00" class="grid"/></g>
+    <g clip-path="url(#parabola-vertical-positive-clip)"><line x1="62.00" y1="289.00" x2="682.00" y2="289.00" class="guide"/><path d="M62.00,76.50 L64.58,79.32 L67.17,82.12 L69.75,84.89 L72.33,87.64 L74.92,90.37 L77.50,93.08 L80.08,95.75 L82.67,98.41 L85.25,101.04 L87.83,103.65 L90.42,106.24 L93.00,108.80 L95.58,111.34 L98.17,113.85 L100.75,116.34 L103.33,118.81 L105.92,121.25 L108.50,123.68 L111.08,126.07 L113.67,128.44 L116.25,130.79 L118.83,133.12 L121.42,135.42 L124.00,137.70 L126.58,139.95 L129.17,142.19 L131.75,144.39 L134.33,146.58 L136.92,148.74 L139.50,150.88 L142.08,152.99 L144.67,155.08 L147.25,157.14 L149.83,159.19 L152.42,161.20 L155.00,163.20 L157.58,165.17 L160.17,167.12 L162.75,169.04 L165.33,170.94 L167.92,172.82 L170.50,174.67 L173.08,176.50 L175.67,178.31 L178.25,180.09 L180.83,181.85 L183.42,183.59 L186.00,185.30 L188.58,186.99 L191.17,188.65 L193.75,190.29 L196.33,191.91 L198.92,193.50 L201.50,195.07 L204.08,196.62 L206.67,198.14 L209.25,199.64 L211.83,201.12 L214.42,202.57 L217.00,204.00 L219.58,205.40 L222.17,206.79 L224.75,208.14 L227.33,209.48 L229.92,210.79 L232.50,212.08 L235.08,213.34 L237.67,214.58 L240.25,215.79 L242.83,216.99 L245.42,218.15 L248.00,219.30 L250.58,220.42 L253.17,221.52 L255.75,222.59 L258.33,223.64 L260.92,224.67 L263.50,225.67 L266.08,226.65 L268.67,227.61 L271.25,228.54 L273.83,229.45 L276.42,230.34 L279.00,231.20 L281.58,232.04 L284.17,232.85 L286.75,233.64 L289.33,234.41 L291.92,235.15 L294.50,235.88 L297.08,236.57 L299.67,237.24 L302.25,237.89 L304.83,238.52 L307.42,239.12 L310.00,239.70 L312.58,240.25 L315.17,240.79 L317.75,241.29 L320.33,241.78 L322.92,242.24 L325.50,242.68 L328.08,243.09 L330.67,243.48 L333.25,243.84 L335.83,244.19 L338.42,244.50 L341.00,244.80 L343.58,245.07 L346.17,245.32 L348.75,245.54 L351.33,245.74 L353.92,245.92 L356.50,246.08 L359.08,246.20 L361.67,246.31 L364.25,246.39 L366.83,246.45 L369.42,246.49 L372.00,246.50 L374.58,246.49 L377.17,246.45 L379.75,246.39 L382.33,246.31 L384.92,246.20 L387.50,246.08 L390.08,245.92 L392.67,245.74 L395.25,245.54 L397.83,245.32 L400.42,245.07 L403.00,244.80 L405.58,244.50 L408.17,244.19 L410.75,243.84 L413.33,243.48 L415.92,243.09 L418.50,242.68 L421.08,242.24 L423.67,241.78 L426.25,241.29 L428.83,240.79 L431.42,240.25 L434.00,239.70 L436.58,239.12 L439.17,238.52 L441.75,237.89 L444.33,237.24 L446.92,236.57 L449.50,235.88 L452.08,235.15 L454.67,234.41 L457.25,233.64 L459.83,232.85 L462.42,232.04 L465.00,231.20 L467.58,230.34 L470.17,229.45 L472.75,228.54 L475.33,227.61 L477.92,226.65 L480.50,225.67 L483.08,224.67 L485.67,223.64 L488.25,222.59 L490.83,221.52 L493.42,220.42 L496.00,219.30 L498.58,218.15 L501.17,216.99 L503.75,215.79 L506.33,214.58 L508.92,213.34 L511.50,212.08 L514.08,210.79 L516.67,209.48 L519.25,208.14 L521.83,206.79 L524.42,205.40 L527.00,204.00 L529.58,202.57 L532.17,201.12 L534.75,199.64 L537.33,198.14 L539.92,196.62 L542.50,195.07 L545.08,193.50 L547.67,191.91 L550.25,190.29 L552.83,188.65 L555.42,186.99 L558.00,185.30 L560.58,183.59 L563.17,181.85 L565.75,180.09 L568.33,178.31 L570.92,176.50 L573.50,174.68 L576.08,172.82 L578.67,170.94 L581.25,169.04 L583.83,167.12 L586.42,165.17 L589.00,163.20 L591.58,161.20 L594.17,159.19 L596.75,157.14 L599.33,155.08 L601.92,152.99 L604.50,150.88 L607.08,148.74 L609.67,146.58 L612.25,144.39 L614.83,142.19 L617.42,139.95 L620.00,137.70 L622.58,135.42 L625.17,133.12 L627.75,130.79 L630.33,128.44 L632.92,126.07 L635.50,123.67 L638.08,121.25 L640.67,118.81 L643.25,116.34 L645.83,113.85 L648.42,111.34 L651.00,108.80 L653.58,106.24 L656.17,103.65 L658.75,101.04 L661.33,98.41 L663.92,95.75 L666.50,93.08 L669.08,90.37 L671.67,87.64 L674.25,84.89 L676.83,82.12 L679.42,79.32 L682.00,76.50" class="curve"/></g>
+    <g><circle cx="372.00" cy="246.50" r="5" class="point"/><circle cx="372.00" cy="204.00" r="5" class="point"/><text x="381.00" y="237.50" text-anchor="start" class="annotation">V(h,k)</text><text x="381.00" y="196.00" text-anchor="start" class="annotation">F</text><text x="90.25" y="282.00" text-anchor="start" class="annotation">directrix</text><text x="391.62" y="225.25" text-anchor="start" class="annotation">p</text></g>
+    <text x="674.0" y="236.50" text-anchor="end" class="annotation">x</text>
+    <text x="383.00" y="53.0" class="annotation">y</text>
+  </svg>
+  <figcaption id="parabola-vertical-positive-caption">Vertical-axis parabola opening upward for p > 0.</figcaption>
+  <p class="diagram-description" id="parabola-vertical-positive-long">The diagram uses symbolic labels rather than a numeric scale. A upward-opening parabola with vertex V of h comma k. The focus lies one distance positive p from the vertex on the vertical axis, and the directrix is the horizontal line the same distance on the opposite side.</p>
+</figure></td><td class="figure-cell"><figure class="conic-figure compact" aria-labelledby="parabola-vertical-negative-caption" aria-describedby="parabola-vertical-negative-long" data-read="A downward-opening parabola with vertex V of h comma k. The focus lies one distance negative p from the vertex on the vertical axis, and the directrix is the horizontal line the same distance on the opposite side.">
+  <svg viewBox="0 0 720 420" role="img" aria-labelledby="parabola-vertical-negative-title parabola-vertical-negative-desc" xmlns="http://www.w3.org/2000/svg">
+    <title id="parabola-vertical-negative-title">Vertical-axis parabola for p negative</title>
+    <desc id="parabola-vertical-negative-desc">A downward-opening parabola with vertex V of h comma k. The focus lies one distance negative p from the vertex on the vertical axis, and the directrix is the horizontal line the same distance on the opposite side.</desc>
+    <style>.plot-bg{fill:#fff;stroke:#94a8c0;stroke-width:2}.grid{stroke:#d9e2ec;stroke-width:1}.axis{stroke:#22354f;stroke-width:2.4}.curve{fill:none;stroke:#c43d31;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.guide{stroke:#a4317a;stroke-width:2.2;stroke-dasharray:8 7}.point{fill:#0759b5;stroke:#fff;stroke-width:2}.tick{font:14px system-ui,sans-serif;fill:#364b68}.annotation{font:700 16px system-ui,sans-serif;fill:#20334f}</style>
+    <defs><clipPath id="parabola-vertical-negative-clip"><rect x="62.0" y="34.0" width="620.0" height="340.0"/></clipPath></defs>
+    <rect x="62.0" y="34.0" width="620.0" height="340.0" class="plot-bg"/>
+    <g><line x1="62.00" y1="34.0" x2="62.00" y2="374.0" class="grid"/><line x1="139.50" y1="34.0" x2="139.50" y2="374.0" class="grid"/><line x1="217.00" y1="34.0" x2="217.00" y2="374.0" class="grid"/><line x1="294.50" y1="34.0" x2="294.50" y2="374.0" class="grid"/><line x1="372.00" y1="34.0" x2="372.00" y2="374.0" class="axis"/><line x1="449.50" y1="34.0" x2="449.50" y2="374.0" class="grid"/><line x1="527.00" y1="34.0" x2="527.00" y2="374.0" class="grid"/><line x1="604.50" y1="34.0" x2="604.50" y2="374.0" class="grid"/><line x1="682.00" y1="34.0" x2="682.00" y2="374.0" class="grid"/><line x1="62.0" y1="374.00" x2="682.0" y2="374.00" class="grid"/><line x1="62.0" y1="331.50" x2="682.0" y2="331.50" class="grid"/><line x1="62.0" y1="289.00" x2="682.0" y2="289.00" class="grid"/><line x1="62.0" y1="246.50" x2="682.0" y2="246.50" class="grid"/><line x1="62.0" y1="204.00" x2="682.0" y2="204.00" class="grid"/><line x1="62.0" y1="161.50" x2="682.0" y2="161.50" class="axis"/><line x1="62.0" y1="119.00" x2="682.0" y2="119.00" class="grid"/><line x1="62.0" y1="76.50" x2="682.0" y2="76.50" class="grid"/><line x1="62.0" y1="34.00" x2="682.0" y2="34.00" class="grid"/></g>
+    <g clip-path="url(#parabola-vertical-negative-clip)"><line x1="62.00" y1="119.00" x2="682.00" y2="119.00" class="guide"/><path d="M62.00,331.50 L64.58,328.68 L67.17,325.88 L69.75,323.11 L72.33,320.36 L74.92,317.63 L77.50,314.92 L80.08,312.25 L82.67,309.59 L85.25,306.96 L87.83,304.35 L90.42,301.76 L93.00,299.20 L95.58,296.66 L98.17,294.15 L100.75,291.66 L103.33,289.19 L105.92,286.75 L108.50,284.32 L111.08,281.93 L113.67,279.56 L116.25,277.21 L118.83,274.88 L121.42,272.58 L124.00,270.30 L126.58,268.05 L129.17,265.81 L131.75,263.61 L134.33,261.42 L136.92,259.26 L139.50,257.12 L142.08,255.01 L144.67,252.92 L147.25,250.86 L149.83,248.81 L152.42,246.80 L155.00,244.80 L157.58,242.83 L160.17,240.88 L162.75,238.96 L165.33,237.06 L167.92,235.18 L170.50,233.33 L173.08,231.50 L175.67,229.69 L178.25,227.91 L180.83,226.15 L183.42,224.41 L186.00,222.70 L188.58,221.01 L191.17,219.35 L193.75,217.71 L196.33,216.09 L198.92,214.50 L201.50,212.93 L204.08,211.38 L206.67,209.86 L209.25,208.36 L211.83,206.88 L214.42,205.43 L217.00,204.00 L219.58,202.60 L222.17,201.21 L224.75,199.86 L227.33,198.52 L229.92,197.21 L232.50,195.92 L235.08,194.66 L237.67,193.42 L240.25,192.21 L242.83,191.01 L245.42,189.85 L248.00,188.70 L250.58,187.58 L253.17,186.48 L255.75,185.41 L258.33,184.36 L260.92,183.33 L263.50,182.32 L266.08,181.35 L268.67,180.39 L271.25,179.46 L273.83,178.55 L276.42,177.66 L279.00,176.80 L281.58,175.96 L284.17,175.15 L286.75,174.36 L289.33,173.59 L291.92,172.85 L294.50,172.12 L297.08,171.43 L299.67,170.76 L302.25,170.11 L304.83,169.48 L307.42,168.88 L310.00,168.30 L312.58,167.75 L315.17,167.21 L317.75,166.71 L320.33,166.22 L322.92,165.76 L325.50,165.32 L328.08,164.91 L330.67,164.52 L333.25,164.16 L335.83,163.81 L338.42,163.50 L341.00,163.20 L343.58,162.93 L346.17,162.68 L348.75,162.46 L351.33,162.26 L353.92,162.08 L356.50,161.93 L359.08,161.80 L361.67,161.69 L364.25,161.61 L366.83,161.55 L369.42,161.51 L372.00,161.50 L374.58,161.51 L377.17,161.55 L379.75,161.61 L382.33,161.69 L384.92,161.80 L387.50,161.93 L390.08,162.08 L392.67,162.26 L395.25,162.46 L397.83,162.68 L400.42,162.93 L403.00,163.20 L405.58,163.50 L408.17,163.81 L410.75,164.16 L413.33,164.52 L415.92,164.91 L418.50,165.32 L421.08,165.76 L423.67,166.22 L426.25,166.71 L428.83,167.21 L431.42,167.75 L434.00,168.30 L436.58,168.88 L439.17,169.48 L441.75,170.11 L444.33,170.76 L446.92,171.43 L449.50,172.12 L452.08,172.85 L454.67,173.59 L457.25,174.36 L459.83,175.15 L462.42,175.96 L465.00,176.80 L467.58,177.66 L470.17,178.55 L472.75,179.46 L475.33,180.39 L477.92,181.35 L480.50,182.33 L483.08,183.33 L485.67,184.36 L488.25,185.41 L490.83,186.48 L493.42,187.58 L496.00,188.70 L498.58,189.85 L501.17,191.01 L503.75,192.21 L506.33,193.42 L508.92,194.66 L511.50,195.92 L514.08,197.21 L516.67,198.52 L519.25,199.86 L521.83,201.21 L524.42,202.60 L527.00,204.00 L529.58,205.43 L532.17,206.88 L534.75,208.36 L537.33,209.86 L539.92,211.38 L542.50,212.93 L545.08,214.50 L547.67,216.09 L550.25,217.71 L552.83,219.35 L555.42,221.01 L558.00,222.70 L560.58,224.41 L563.17,226.15 L565.75,227.91 L568.33,229.69 L570.92,231.50 L573.50,233.32 L576.08,235.18 L578.67,237.06 L581.25,238.96 L583.83,240.88 L586.42,242.83 L589.00,244.80 L591.58,246.80 L594.17,248.81 L596.75,250.86 L599.33,252.92 L601.92,255.01 L604.50,257.12 L607.08,259.26 L609.67,261.42 L612.25,263.61 L614.83,265.81 L617.42,268.05 L620.00,270.30 L622.58,272.58 L625.17,274.88 L627.75,277.21 L630.33,279.56 L632.92,281.93 L635.50,284.33 L638.08,286.75 L640.67,289.19 L643.25,291.66 L645.83,294.15 L648.42,296.66 L651.00,299.20 L653.58,301.76 L656.17,304.35 L658.75,306.96 L661.33,309.59 L663.92,312.25 L666.50,314.92 L669.08,317.63 L671.67,320.36 L674.25,323.11 L676.83,325.88 L679.42,328.68 L682.00,331.50" class="curve"/></g>
+    <g><circle cx="372.00" cy="161.50" r="5" class="point"/><circle cx="372.00" cy="204.00" r="5" class="point"/><text x="381.00" y="183.50" text-anchor="start" class="annotation">V(h,k)</text><text x="381.00" y="196.00" text-anchor="start" class="annotation">F</text><text x="90.25" y="112.00" text-anchor="start" class="annotation">directrix</text><text x="391.62" y="182.75" text-anchor="start" class="annotation">|p|</text></g>
+    <text x="674.0" y="151.50" text-anchor="end" class="annotation">x</text>
+    <text x="383.00" y="53.0" class="annotation">y</text>
+  </svg>
+  <figcaption id="parabola-vertical-negative-caption">Vertical-axis parabola opening downward for p < 0.</figcaption>
+  <p class="diagram-description" id="parabola-vertical-negative-long">The diagram uses symbolic labels rather than a numeric scale. A downward-opening parabola with vertex V of h comma k. The focus lies one distance negative p from the vertex on the vertical axis, and the directrix is the horizontal line the same distance on the opposite side.</p>
+</figure></td></tr>
+      <tr><th scope="row" class="equation-cell"><strong>Horizontal axis</strong><div class="math-display" role="math" aria-label="the quantity y minus k squared equals four p times the quantity x minus h" data-read="the quantity y minus k squared equals four p times the quantity x minus h">\[ (y-k)^2=4p(x-h) \]</div><p data-read="or">or</p><div class="math-display" role="math" aria-label="x equals a y squared plus b y plus c, where p equals one over four a" data-read="x equals a y squared plus b y plus c, where p equals one over four a">\[ x=ay^2+by+c,\qquad p=\frac{1}{4a} \]</div><div class="math-display" role="math" aria-label="focus F at h plus p comma k" data-read="focus F at h plus p comma k">\[ F(h+p,k) \]</div><div class="math-display" role="math" aria-label="directrix x equals h minus p" data-read="directrix x equals h minus p">\[ x=h-p \]</div></th><td class="figure-cell"><figure class="conic-figure compact" aria-labelledby="parabola-horizontal-positive-caption" aria-describedby="parabola-horizontal-positive-long" data-read="A right-opening parabola with vertex V of h comma k. The focus lies one distance positive p from the vertex on the horizontal axis, and the directrix is the vertical line the same distance on the opposite side.">
+  <svg viewBox="0 0 720 420" role="img" aria-labelledby="parabola-horizontal-positive-title parabola-horizontal-positive-desc" xmlns="http://www.w3.org/2000/svg">
+    <title id="parabola-horizontal-positive-title">Horizontal-axis parabola for p positive</title>
+    <desc id="parabola-horizontal-positive-desc">A right-opening parabola with vertex V of h comma k. The focus lies one distance positive p from the vertex on the horizontal axis, and the directrix is the vertical line the same distance on the opposite side.</desc>
+    <style>.plot-bg{fill:#fff;stroke:#94a8c0;stroke-width:2}.grid{stroke:#d9e2ec;stroke-width:1}.axis{stroke:#22354f;stroke-width:2.4}.curve{fill:none;stroke:#c43d31;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.guide{stroke:#a4317a;stroke-width:2.2;stroke-dasharray:8 7}.point{fill:#0759b5;stroke:#fff;stroke-width:2}.tick{font:14px system-ui,sans-serif;fill:#364b68}.annotation{font:700 16px system-ui,sans-serif;fill:#20334f}</style>
+    <defs><clipPath id="parabola-horizontal-positive-clip"><rect x="62.0" y="34.0" width="620.0" height="340.0"/></clipPath></defs>
+    <rect x="62.0" y="34.0" width="620.0" height="340.0" class="plot-bg"/>
+    <g><line x1="62.00" y1="34.0" x2="62.00" y2="374.0" class="grid"/><line x1="139.50" y1="34.0" x2="139.50" y2="374.0" class="grid"/><line x1="217.00" y1="34.0" x2="217.00" y2="374.0" class="grid"/><line x1="294.50" y1="34.0" x2="294.50" y2="374.0" class="axis"/><line x1="372.00" y1="34.0" x2="372.00" y2="374.0" class="grid"/><line x1="449.50" y1="34.0" x2="449.50" y2="374.0" class="grid"/><line x1="527.00" y1="34.0" x2="527.00" y2="374.0" class="grid"/><line x1="604.50" y1="34.0" x2="604.50" y2="374.0" class="grid"/><line x1="682.00" y1="34.0" x2="682.00" y2="374.0" class="grid"/><line x1="62.0" y1="374.00" x2="682.0" y2="374.00" class="grid"/><line x1="62.0" y1="331.50" x2="682.0" y2="331.50" class="grid"/><line x1="62.0" y1="289.00" x2="682.0" y2="289.00" class="grid"/><line x1="62.0" y1="246.50" x2="682.0" y2="246.50" class="grid"/><line x1="62.0" y1="204.00" x2="682.0" y2="204.00" class="axis"/><line x1="62.0" y1="161.50" x2="682.0" y2="161.50" class="grid"/><line x1="62.0" y1="119.00" x2="682.0" y2="119.00" class="grid"/><line x1="62.0" y1="76.50" x2="682.0" y2="76.50" class="grid"/><line x1="62.0" y1="34.00" x2="682.0" y2="34.00" class="grid"/></g>
+    <g clip-path="url(#parabola-horizontal-positive-clip)"><line x1="217.00" y1="374.00" x2="217.00" y2="34.00" class="guide"/><path d="M604.50,374.00 L599.35,372.58 L594.25,371.17 L589.19,369.75 L584.18,368.33 L579.20,366.92 L574.27,365.50 L569.39,364.08 L564.54,362.67 L559.74,361.25 L554.99,359.83 L550.27,358.42 L545.60,357.00 L540.97,355.58 L536.39,354.17 L531.84,352.75 L527.34,351.33 L522.89,349.92 L518.47,348.50 L514.10,347.08 L509.78,345.67 L505.49,344.25 L501.25,342.83 L497.05,341.42 L492.90,340.00 L488.79,338.58 L484.72,337.17 L480.69,335.75 L476.71,334.33 L472.77,332.92 L468.88,331.50 L465.02,330.08 L461.21,328.67 L457.44,327.25 L453.72,325.83 L450.04,324.42 L446.40,323.00 L442.80,321.58 L439.25,320.17 L435.74,318.75 L432.28,317.33 L428.85,315.92 L425.48,314.50 L422.14,313.08 L418.84,311.67 L415.59,310.25 L412.39,308.83 L409.22,307.42 L406.10,306.00 L403.02,304.58 L399.99,303.17 L396.99,301.75 L394.04,300.33 L391.14,298.92 L388.27,297.50 L385.45,296.08 L382.68,294.67 L379.94,293.25 L377.25,291.83 L374.60,290.42 L372.00,289.00 L369.44,287.58 L366.92,286.17 L364.44,284.75 L362.01,283.33 L359.62,281.92 L357.27,280.50 L354.97,279.08 L352.71,277.67 L350.49,276.25 L348.32,274.83 L346.19,273.42 L344.10,272.00 L342.05,270.58 L340.05,269.17 L338.09,267.75 L336.18,266.33 L334.30,264.92 L332.47,263.50 L330.69,262.08 L328.94,260.67 L327.24,259.25 L325.59,257.83 L323.97,256.42 L322.40,255.00 L320.87,253.58 L319.39,252.17 L317.94,250.75 L316.54,249.33 L315.19,247.92 L313.88,246.50 L312.60,245.08 L311.38,243.67 L310.19,242.25 L309.05,240.83 L307.95,239.42 L306.90,238.00 L305.89,236.58 L304.92,235.17 L303.99,233.75 L303.11,232.33 L302.27,230.92 L301.48,229.50 L300.72,228.08 L300.01,226.67 L299.34,225.25 L298.72,223.83 L298.14,222.42 L297.60,221.00 L297.10,219.58 L296.65,218.17 L296.24,216.75 L295.88,215.33 L295.55,213.92 L295.27,212.50 L295.04,211.08 L294.84,209.67 L294.69,208.25 L294.59,206.83 L294.52,205.42 L294.50,204.00 L294.52,202.58 L294.59,201.17 L294.69,199.75 L294.84,198.33 L295.04,196.92 L295.27,195.50 L295.55,194.08 L295.88,192.67 L296.24,191.25 L296.65,189.83 L297.10,188.42 L297.60,187.00 L298.14,185.58 L298.72,184.17 L299.34,182.75 L300.01,181.33 L300.72,179.92 L301.48,178.50 L302.27,177.08 L303.11,175.67 L303.99,174.25 L304.92,172.83 L305.89,171.42 L306.90,170.00 L307.95,168.58 L309.05,167.17 L310.19,165.75 L311.38,164.33 L312.60,162.92 L313.88,161.50 L315.19,160.08 L316.54,158.67 L317.94,157.25 L319.39,155.83 L320.87,154.42 L322.40,153.00 L323.97,151.58 L325.59,150.17 L327.24,148.75 L328.94,147.33 L330.69,145.92 L332.48,144.50 L334.30,143.08 L336.18,141.67 L338.09,140.25 L340.05,138.83 L342.05,137.42 L344.10,136.00 L346.19,134.58 L348.32,133.17 L350.49,131.75 L352.71,130.33 L354.97,128.92 L357.27,127.50 L359.62,126.08 L362.01,124.67 L364.44,123.25 L366.92,121.83 L369.44,120.42 L372.00,119.00 L374.60,117.58 L377.25,116.17 L379.94,114.75 L382.68,113.33 L385.45,111.92 L388.27,110.50 L391.14,109.08 L394.04,107.67 L396.99,106.25 L399.99,104.83 L403.02,103.42 L406.10,102.00 L409.22,100.58 L412.39,99.17 L415.59,97.75 L418.84,96.33 L422.14,94.92 L425.47,93.50 L428.85,92.08 L432.28,90.67 L435.74,89.25 L439.25,87.83 L442.80,86.42 L446.40,85.00 L450.04,83.58 L453.72,82.17 L457.44,80.75 L461.21,79.33 L465.02,77.92 L468.88,76.50 L472.77,75.08 L476.71,73.67 L480.69,72.25 L484.72,70.83 L488.79,69.42 L492.90,68.00 L497.05,66.58 L501.25,65.17 L505.49,63.75 L509.78,62.33 L514.10,60.92 L518.48,59.50 L522.89,58.08 L527.34,56.67 L531.84,55.25 L536.39,53.83 L540.97,52.42 L545.60,51.00 L550.27,49.58 L554.99,48.17 L559.74,46.75 L564.54,45.33 L569.39,43.92 L574.27,42.50 L579.20,41.08 L584.18,39.67 L589.19,38.25 L594.25,36.83 L599.35,35.42 L604.50,34.00" class="curve"/></g>
+    <g><circle cx="294.50" cy="204.00" r="5" class="point"/><circle cx="372.00" cy="204.00" r="5" class="point"/><text x="303.50" y="192.00" text-anchor="start" class="annotation">V(h,k)</text><text x="380.00" y="226.00" text-anchor="start" class="annotation">F</text><text x="225.00" y="51.00" text-anchor="start" class="annotation">directrix</text><text x="337.25" y="190.75" text-anchor="start" class="annotation">p</text></g>
+    <text x="674.0" y="194.00" text-anchor="end" class="annotation">x</text>
+    <text x="305.50" y="53.0" class="annotation">y</text>
+  </svg>
+  <figcaption id="parabola-horizontal-positive-caption">Horizontal-axis parabola opening right for p > 0.</figcaption>
+  <p class="diagram-description" id="parabola-horizontal-positive-long">The diagram uses symbolic labels rather than a numeric scale. A right-opening parabola with vertex V of h comma k. The focus lies one distance positive p from the vertex on the horizontal axis, and the directrix is the vertical line the same distance on the opposite side.</p>
+</figure></td><td class="figure-cell"><figure class="conic-figure compact" aria-labelledby="parabola-horizontal-negative-caption" aria-describedby="parabola-horizontal-negative-long" data-read="A left-opening parabola with vertex V of h comma k. The focus lies one distance negative p from the vertex on the horizontal axis, and the directrix is the vertical line the same distance on the opposite side.">
+  <svg viewBox="0 0 720 420" role="img" aria-labelledby="parabola-horizontal-negative-title parabola-horizontal-negative-desc" xmlns="http://www.w3.org/2000/svg">
+    <title id="parabola-horizontal-negative-title">Horizontal-axis parabola for p negative</title>
+    <desc id="parabola-horizontal-negative-desc">A left-opening parabola with vertex V of h comma k. The focus lies one distance negative p from the vertex on the horizontal axis, and the directrix is the vertical line the same distance on the opposite side.</desc>
+    <style>.plot-bg{fill:#fff;stroke:#94a8c0;stroke-width:2}.grid{stroke:#d9e2ec;stroke-width:1}.axis{stroke:#22354f;stroke-width:2.4}.curve{fill:none;stroke:#c43d31;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.guide{stroke:#a4317a;stroke-width:2.2;stroke-dasharray:8 7}.point{fill:#0759b5;stroke:#fff;stroke-width:2}.tick{font:14px system-ui,sans-serif;fill:#364b68}.annotation{font:700 16px system-ui,sans-serif;fill:#20334f}</style>
+    <defs><clipPath id="parabola-horizontal-negative-clip"><rect x="62.0" y="34.0" width="620.0" height="340.0"/></clipPath></defs>
+    <rect x="62.0" y="34.0" width="620.0" height="340.0" class="plot-bg"/>
+    <g><line x1="62.00" y1="34.0" x2="62.00" y2="374.0" class="grid"/><line x1="139.50" y1="34.0" x2="139.50" y2="374.0" class="grid"/><line x1="217.00" y1="34.0" x2="217.00" y2="374.0" class="grid"/><line x1="294.50" y1="34.0" x2="294.50" y2="374.0" class="grid"/><line x1="372.00" y1="34.0" x2="372.00" y2="374.0" class="grid"/><line x1="449.50" y1="34.0" x2="449.50" y2="374.0" class="axis"/><line x1="527.00" y1="34.0" x2="527.00" y2="374.0" class="grid"/><line x1="604.50" y1="34.0" x2="604.50" y2="374.0" class="grid"/><line x1="682.00" y1="34.0" x2="682.00" y2="374.0" class="grid"/><line x1="62.0" y1="374.00" x2="682.0" y2="374.00" class="grid"/><line x1="62.0" y1="331.50" x2="682.0" y2="331.50" class="grid"/><line x1="62.0" y1="289.00" x2="682.0" y2="289.00" class="grid"/><line x1="62.0" y1="246.50" x2="682.0" y2="246.50" class="grid"/><line x1="62.0" y1="204.00" x2="682.0" y2="204.00" class="axis"/><line x1="62.0" y1="161.50" x2="682.0" y2="161.50" class="grid"/><line x1="62.0" y1="119.00" x2="682.0" y2="119.00" class="grid"/><line x1="62.0" y1="76.50" x2="682.0" y2="76.50" class="grid"/><line x1="62.0" y1="34.00" x2="682.0" y2="34.00" class="grid"/></g>
+    <g clip-path="url(#parabola-horizontal-negative-clip)"><line x1="527.00" y1="374.00" x2="527.00" y2="34.00" class="guide"/><path d="M139.50,374.00 L144.65,372.58 L149.75,371.17 L154.81,369.75 L159.82,368.33 L164.80,366.92 L169.73,365.50 L174.61,364.08 L179.46,362.67 L184.26,361.25 L189.01,359.83 L193.73,358.42 L198.40,357.00 L203.03,355.58 L207.61,354.17 L212.16,352.75 L216.66,351.33 L221.11,349.92 L225.53,348.50 L229.90,347.08 L234.22,345.67 L238.51,344.25 L242.75,342.83 L246.95,341.42 L251.10,340.00 L255.21,338.58 L259.28,337.17 L263.31,335.75 L267.29,334.33 L271.23,332.92 L275.12,331.50 L278.98,330.08 L282.79,328.67 L286.56,327.25 L290.28,325.83 L293.96,324.42 L297.60,323.00 L301.20,321.58 L304.75,320.17 L308.26,318.75 L311.72,317.33 L315.15,315.92 L318.52,314.50 L321.86,313.08 L325.16,311.67 L328.41,310.25 L331.61,308.83 L334.78,307.42 L337.90,306.00 L340.98,304.58 L344.01,303.17 L347.01,301.75 L349.96,300.33 L352.86,298.92 L355.73,297.50 L358.55,296.08 L361.32,294.67 L364.06,293.25 L366.75,291.83 L369.40,290.42 L372.00,289.00 L374.56,287.58 L377.08,286.17 L379.56,284.75 L381.99,283.33 L384.38,281.92 L386.73,280.50 L389.03,279.08 L391.29,277.67 L393.51,276.25 L395.68,274.83 L397.81,273.42 L399.90,272.00 L401.95,270.58 L403.95,269.17 L405.91,267.75 L407.82,266.33 L409.70,264.92 L411.52,263.50 L413.31,262.08 L415.06,260.67 L416.76,259.25 L418.41,257.83 L420.03,256.42 L421.60,255.00 L423.13,253.58 L424.61,252.17 L426.06,250.75 L427.46,249.33 L428.81,247.92 L430.12,246.50 L431.40,245.08 L432.62,243.67 L433.81,242.25 L434.95,240.83 L436.05,239.42 L437.10,238.00 L438.11,236.58 L439.08,235.17 L440.01,233.75 L440.89,232.33 L441.73,230.92 L442.53,229.50 L443.28,228.08 L443.99,226.67 L444.66,225.25 L445.28,223.83 L445.86,222.42 L446.40,221.00 L446.90,219.58 L447.35,218.17 L447.76,216.75 L448.12,215.33 L448.45,213.92 L448.73,212.50 L448.96,211.08 L449.16,209.67 L449.31,208.25 L449.41,206.83 L449.48,205.42 L449.50,204.00 L449.48,202.58 L449.41,201.17 L449.31,199.75 L449.16,198.33 L448.96,196.92 L448.73,195.50 L448.45,194.08 L448.12,192.67 L447.76,191.25 L447.35,189.83 L446.90,188.42 L446.40,187.00 L445.86,185.58 L445.28,184.17 L444.66,182.75 L443.99,181.33 L443.28,179.92 L442.53,178.50 L441.73,177.08 L440.89,175.67 L440.01,174.25 L439.08,172.83 L438.11,171.42 L437.10,170.00 L436.05,168.58 L434.95,167.17 L433.81,165.75 L432.62,164.33 L431.40,162.92 L430.12,161.50 L428.81,160.08 L427.46,158.67 L426.06,157.25 L424.61,155.83 L423.13,154.42 L421.60,153.00 L420.03,151.58 L418.41,150.17 L416.76,148.75 L415.06,147.33 L413.31,145.92 L411.52,144.50 L409.70,143.08 L407.82,141.67 L405.91,140.25 L403.95,138.83 L401.95,137.42 L399.90,136.00 L397.81,134.58 L395.68,133.17 L393.51,131.75 L391.29,130.33 L389.03,128.92 L386.73,127.50 L384.38,126.08 L381.99,124.67 L379.56,123.25 L377.08,121.83 L374.56,120.42 L372.00,119.00 L369.40,117.58 L366.75,116.17 L364.06,114.75 L361.32,113.33 L358.55,111.92 L355.73,110.50 L352.86,109.08 L349.96,107.67 L347.01,106.25 L344.01,104.83 L340.98,103.42 L337.90,102.00 L334.78,100.58 L331.61,99.17 L328.41,97.75 L325.16,96.33 L321.86,94.92 L318.53,93.50 L315.15,92.08 L311.72,90.67 L308.26,89.25 L304.75,87.83 L301.20,86.42 L297.60,85.00 L293.96,83.58 L290.28,82.17 L286.56,80.75 L282.79,79.33 L278.98,77.92 L275.12,76.50 L271.23,75.08 L267.29,73.67 L263.31,72.25 L259.28,70.83 L255.21,69.42 L251.10,68.00 L246.95,66.58 L242.75,65.17 L238.51,63.75 L234.22,62.33 L229.90,60.92 L225.52,59.50 L221.11,58.08 L216.66,56.67 L212.16,55.25 L207.61,53.83 L203.03,52.42 L198.40,51.00 L193.73,49.58 L189.01,48.17 L184.26,46.75 L179.46,45.33 L174.61,43.92 L169.73,42.50 L164.80,41.08 L159.82,39.67 L154.81,38.25 L149.75,36.83 L144.65,35.42 L139.50,34.00" class="curve"/></g>
+    <g><circle cx="449.50" cy="204.00" r="5" class="point"/><circle cx="372.00" cy="204.00" r="5" class="point"/><text x="440.50" y="192.00" text-anchor="end" class="annotation">V(h,k)</text><text x="364.00" y="226.00" text-anchor="end" class="annotation">F</text><text x="519.00" y="51.00" text-anchor="end" class="annotation">directrix</text><text x="414.75" y="190.75" text-anchor="start" class="annotation">|p|</text></g>
+    <text x="674.0" y="194.00" text-anchor="end" class="annotation">x</text>
+    <text x="460.50" y="53.0" class="annotation">y</text>
+  </svg>
+  <figcaption id="parabola-horizontal-negative-caption">Horizontal-axis parabola opening left for p < 0.</figcaption>
+  <p class="diagram-description" id="parabola-horizontal-negative-long">The diagram uses symbolic labels rather than a numeric scale. A left-opening parabola with vertex V of h comma k. The focus lies one distance negative p from the vertex on the horizontal axis, and the directrix is the vertical line the same distance on the opposite side.</p>
+</figure></td></tr>
+    </tbody>
+  </table>
+</div>
+
+  <div class="source-page-identity" role="note" data-source-file="Notes_for_Conics.pdf" data-source-page="2" data-read="Source page 2 of Notes_for_Conics.pdf. Ellipse.">
+  <span class="source-page-number">Notes_for_Conics.pdf - source page 2</span>
+  <strong>Ellipse</strong>
+</div>
+  <section aria-labelledby="ellipse-heading">
+    <h2 id="ellipse-heading" data-read="ELLIPSE">ELLIPSE</h2>
+    <div class="definition-panel">
+      <p data-read="An ellipse is the set of all points in a plane, the sum of whose distances from two fixed points (called the foci) is a constant.">An ellipse is the set of all points in a plane, the sum of whose distances from two fixed points (called the foci) is a constant.</p>
+      <p data-read="The foci lie on the longer axis, called the major axis. The endpoints of the major axis are called the vertices of the ellipse. The shorter axis is called the minor axis.">The foci lie on the longer axis, called the major axis. The endpoints of the major axis are called the vertices of the ellipse. The shorter axis is called the minor axis.</p>
+    </div>
+    <figure class="conic-figure" aria-labelledby="ellipse-reference-caption" aria-describedby="ellipse-reference-long" data-read="A horizontal ellipse centered at the origin. Vertices V prime at negative a comma zero and V at a comma zero lie on the major axis. Co-vertices M at zero comma b and M prime at zero comma negative b lie on the minor axis. Foci F prime and F lie at negative c comma zero and c comma zero.">
+  <svg viewBox="0 0 720 420" role="img" aria-labelledby="ellipse-reference-title ellipse-reference-desc" xmlns="http://www.w3.org/2000/svg">
+    <title id="ellipse-reference-title">Horizontal ellipse centered at the origin</title>
+    <desc id="ellipse-reference-desc">A horizontal ellipse centered at the origin. Vertices V prime at negative a comma zero and V at a comma zero lie on the major axis. Co-vertices M at zero comma b and M prime at zero comma negative b lie on the minor axis. Foci F prime and F lie at negative c comma zero and c comma zero.</desc>
+    <style>.plot-bg{fill:#fff;stroke:#94a8c0;stroke-width:2}.grid{stroke:#d9e2ec;stroke-width:1}.axis{stroke:#22354f;stroke-width:2.4}.curve{fill:none;stroke:#c43d31;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.guide{stroke:#a4317a;stroke-width:2.2;stroke-dasharray:8 7}.point{fill:#0759b5;stroke:#fff;stroke-width:2}.tick{font:14px system-ui,sans-serif;fill:#364b68}.annotation{font:700 16px system-ui,sans-serif;fill:#20334f}</style>
+    <defs><clipPath id="ellipse-reference-clip"><rect x="62.0" y="34.0" width="620.0" height="340.0"/></clipPath></defs>
+    <rect x="62.0" y="34.0" width="620.0" height="340.0" class="plot-bg"/>
+    <g><line x1="76.76" y1="34.0" x2="76.76" y2="374.0" class="grid"/><line x1="224.38" y1="34.0" x2="224.38" y2="374.0" class="grid"/><line x1="372.00" y1="34.0" x2="372.00" y2="374.0" class="axis"/><line x1="519.62" y1="34.0" x2="519.62" y2="374.0" class="grid"/><line x1="667.24" y1="34.0" x2="667.24" y2="374.0" class="grid"/><line x1="62.0" y1="368.52" x2="682.0" y2="368.52" class="grid"/><line x1="62.0" y1="313.68" x2="682.0" y2="313.68" class="grid"/><line x1="62.0" y1="258.84" x2="682.0" y2="258.84" class="grid"/><line x1="62.0" y1="204.00" x2="682.0" y2="204.00" class="axis"/><line x1="62.0" y1="149.16" x2="682.0" y2="149.16" class="grid"/><line x1="62.0" y1="94.32" x2="682.0" y2="94.32" class="grid"/><line x1="62.0" y1="39.48" x2="682.0" y2="39.48" class="grid"/></g>
+    <g clip-path="url(#ellipse-reference-clip)"><path d="M593.43,204.00 L593.35,201.13 L593.13,198.26 L592.75,195.39 L592.22,192.54 L591.53,189.68 L590.70,186.84 L589.72,184.01 L588.59,181.20 L587.31,178.40 L585.88,175.61 L584.31,172.85 L582.59,170.11 L580.73,167.39 L578.72,164.70 L576.57,162.03 L574.29,159.39 L571.86,156.78 L569.29,154.21 L566.60,151.67 L563.76,149.16 L560.80,146.69 L557.71,144.27 L554.49,141.88 L551.14,139.53 L547.67,137.23 L544.08,134.98 L540.38,132.77 L536.55,130.61 L532.62,128.50 L528.57,126.45 L524.42,124.44 L520.16,122.49 L515.81,120.60 L511.35,118.76 L506.80,116.99 L502.15,115.27 L497.42,113.61 L492.60,112.02 L487.70,110.48 L482.71,109.02 L477.66,107.61 L472.53,106.28 L467.33,105.01 L462.06,103.80 L456.74,102.67 L451.35,101.61 L445.91,100.61 L440.43,99.69 L434.89,98.84 L429.31,98.06 L423.69,97.35 L418.04,96.72 L412.35,96.16 L406.64,95.67 L400.90,95.26 L395.15,94.92 L389.37,94.66 L383.59,94.47 L377.80,94.36 L372.00,94.32 L366.20,94.36 L360.41,94.47 L354.63,94.66 L348.85,94.92 L343.10,95.26 L337.36,95.67 L331.65,96.16 L325.96,96.72 L320.31,97.35 L314.69,98.06 L309.11,98.84 L303.57,99.69 L298.09,100.61 L292.65,101.61 L287.26,102.67 L281.94,103.80 L276.67,105.01 L271.47,106.28 L266.34,107.61 L261.29,109.02 L256.30,110.48 L251.40,112.02 L246.58,113.61 L241.85,115.27 L237.20,116.99 L232.65,118.76 L228.19,120.60 L223.84,122.49 L219.58,124.44 L215.43,126.45 L211.38,128.50 L207.45,130.61 L203.62,132.77 L199.92,134.98 L196.33,137.23 L192.86,139.53 L189.51,141.88 L186.29,144.27 L183.20,146.69 L180.24,149.16 L177.40,151.67 L174.71,154.21 L172.14,156.78 L169.71,159.39 L167.43,162.03 L165.28,164.70 L163.27,167.39 L161.41,170.11 L159.69,172.85 L158.12,175.61 L156.69,178.40 L155.41,181.20 L154.28,184.01 L153.30,186.84 L152.47,189.68 L151.78,192.54 L151.25,195.39 L150.87,198.26 L150.65,201.13 L150.57,204.00 L150.65,206.87 L150.87,209.74 L151.25,212.61 L151.78,215.46 L152.47,218.32 L153.30,221.16 L154.28,223.99 L155.41,226.80 L156.69,229.60 L158.12,232.39 L159.69,235.15 L161.41,237.89 L163.27,240.61 L165.28,243.30 L167.43,245.97 L169.71,248.61 L172.14,251.22 L174.71,253.79 L177.40,256.33 L180.24,258.84 L183.20,261.31 L186.29,263.73 L189.51,266.12 L192.86,268.47 L196.33,270.77 L199.92,273.02 L203.62,275.23 L207.45,277.39 L211.38,279.50 L215.43,281.55 L219.58,283.56 L223.84,285.51 L228.19,287.40 L232.65,289.24 L237.20,291.01 L241.85,292.73 L246.58,294.39 L251.40,295.98 L256.30,297.52 L261.29,298.98 L266.34,300.39 L271.47,301.72 L276.67,302.99 L281.94,304.20 L287.26,305.33 L292.65,306.39 L298.09,307.39 L303.57,308.31 L309.11,309.16 L314.69,309.94 L320.31,310.65 L325.96,311.28 L331.65,311.84 L337.36,312.33 L343.10,312.74 L348.85,313.08 L354.63,313.34 L360.41,313.53 L366.20,313.64 L372.00,313.68 L377.80,313.64 L383.59,313.53 L389.37,313.34 L395.15,313.08 L400.90,312.74 L406.64,312.33 L412.35,311.84 L418.04,311.28 L423.69,310.65 L429.31,309.94 L434.89,309.16 L440.43,308.31 L445.91,307.39 L451.35,306.39 L456.74,305.33 L462.06,304.20 L467.33,302.99 L472.53,301.72 L477.66,300.39 L482.71,298.98 L487.70,297.52 L492.60,295.98 L497.42,294.39 L502.15,292.73 L506.80,291.01 L511.35,289.24 L515.81,287.40 L520.16,285.51 L524.42,283.56 L528.57,281.55 L532.62,279.50 L536.55,277.39 L540.38,275.23 L544.08,273.02 L547.67,270.77 L551.14,268.47 L554.49,266.12 L557.71,263.73 L560.80,261.31 L563.76,258.84 L566.60,256.33 L569.29,253.79 L571.86,251.22 L574.29,248.61 L576.57,245.97 L578.72,243.30 L580.73,240.61 L582.59,237.89 L584.31,235.15 L585.88,232.39 L587.31,229.60 L588.59,226.80 L589.72,223.99 L590.70,221.16 L591.53,218.32 L592.22,215.46 L592.75,212.61 L593.13,209.74 L593.35,206.87 L593.43,204.00" class="curve"/></g>
+    <g><circle cx="150.57" cy="204.00" r="5" class="point"/><circle cx="593.43" cy="204.00" r="5" class="point"/><circle cx="372.00" cy="94.32" r="5" class="point"/><circle cx="372.00" cy="313.68" r="5" class="point"/><circle cx="206.96" cy="204.00" r="5" class="point"/><circle cx="537.04" cy="204.00" r="5" class="point"/><text x="142.57" y="192.00" text-anchor="end" class="annotation">V&#x27;(-a,0)</text><text x="601.43" y="192.00" text-anchor="start" class="annotation">V(a,0)</text><text x="364.00" y="84.32" text-anchor="end" class="annotation">M(0,b)</text><text x="364.00" y="333.68" text-anchor="end" class="annotation">M&#x27;(0,-b)</text><text x="198.96" y="226.00" text-anchor="end" class="annotation">F&#x27;(-c,0)</text><text x="545.04" y="226.00" text-anchor="start" class="annotation">F(c,0)</text></g>
+    <text x="674.0" y="194.00" text-anchor="end" class="annotation">x</text>
+    <text x="383.00" y="53.0" class="annotation">y</text>
+  </svg>
+  <figcaption id="ellipse-reference-caption">Horizontal ellipse with center at the origin, vertices, co-vertices, and foci. Equation: <span class="math-inline" role="math" aria-label="x squared over a squared plus y squared over b squared equals one">\(\frac{x^2}{a^2}+\frac{y^2}{b^2}=1\)</span>.</figcaption>
+  <p class="diagram-description" id="ellipse-reference-long">The diagram uses symbolic labels rather than a numeric scale. A horizontal ellipse centered at the origin. Vertices V prime at negative a comma zero and V at a comma zero lie on the major axis. Co-vertices M at zero comma b and M prime at zero comma negative b lie on the minor axis. Foci F prime and F lie at negative c comma zero and c comma zero. The equation shown in the source is x squared over a squared plus y squared over b squared equals one.</p>
+</figure>
+    <div class="equation-panel" aria-labelledby="ellipse-origin-heading">
+      <h3 id="ellipse-origin-heading" data-read="Standard Equations of an Ellipse with Center at the Origin">Standard Equations of an Ellipse with Center at the Origin</h3>
+      <div class="math-display" role="math" aria-label="x squared over a squared plus y squared over b squared equals one, or x squared over b squared plus y squared over a squared equals one" data-read="x squared over a squared plus y squared over b squared equals one, or x squared over b squared plus y squared over a squared equals one">\[ \frac{x^2}{a^2}+\frac{y^2}{b^2}=1\qquad\text{or}\qquad\frac{x^2}{b^2}+\frac{y^2}{a^2}=1 \]</div>
+      <p data-read="The graph, where a &gt; b &gt; 0, is an ellipse with center at the origin. The length of the major axis is 2a, and the length of the minor axis is 2b. The foci are a distance c from the origin, where c squared equals a squared minus b squared.">The graph, where a > b > 0, is an ellipse with center at the origin. The length of the major axis is 2a, and the length of the minor axis is 2b. The foci are a distance c from the origin, where c squared equals a squared minus b squared.</p>
+      <div class="math-display" role="math" aria-label="a is greater than b, b is greater than zero, and c squared equals a squared minus b squared" data-read="a is greater than b, b is greater than zero, and c squared equals a squared minus b squared">\[ a&gt;b&gt;0,\qquad c^2=a^2-b^2 \]</div>
+    </div>
+    <div class="equation-panel" aria-labelledby="ellipse-shifted-heading">
+      <h3 id="ellipse-shifted-heading" data-read="Equation of an ellipse with center at h comma k">Equation of an Ellipse with Center at <span class="math-inline" role="math" aria-label="h comma k">\((h,k)\)</span></h3>
+      <div class="math-display" role="math" aria-label="the quantity x minus h squared over a squared plus the quantity y minus k squared over b squared equals one" data-read="the quantity x minus h squared over a squared plus the quantity y minus k squared over b squared equals one">\[ \frac{(x-h)^2}{a^2}+\frac{(y-k)^2}{b^2}=1 \]</div>
+      <p data-read="Note that if center shifts, the foci will shift as well.">Note that if center shifts, the foci will shift as well.</p>
+    </div>
+  </section>
+
+  <div class="source-page-identity" role="note" data-source-file="Notes_for_Conics.pdf" data-source-page="3" data-read="Source page 3 of Notes_for_Conics.pdf. Hyperbola.">
+  <span class="source-page-number">Notes_for_Conics.pdf - source page 3</span>
+  <strong>Hyperbola</strong>
+</div>
+  <section aria-labelledby="hyperbola-heading">
+    <h2 id="hyperbola-heading" data-read="HYPERBOLA">HYPERBOLA</h2>
+    <div class="definition-panel"><p data-read="A hyperbola is the set of all points in a plane, the difference of whose distances from two fixed points (the foci) is a positive constant.">A hyperbola is the set of all points in a plane, the difference of whose distances from two fixed points (the foci) is a positive constant.</p></div>
+    <div class="equation-panel" aria-labelledby="hyperbola-origin-heading">
+      <h3 id="hyperbola-origin-heading" data-read="Standard Equations of a Hyperbola with Center at the Origin">Standard Equations of a Hyperbola with Center at the Origin</h3>
+      <div class="math-display" role="math" aria-label="x squared over a squared minus y squared over b squared equals one, or y squared over a squared minus x squared over b squared equals one" data-read="x squared over a squared minus y squared over b squared equals one, or y squared over a squared minus x squared over b squared equals one">\[ \frac{x^2}{a^2}-\frac{y^2}{b^2}=1\qquad\text{or}\qquad\frac{y^2}{a^2}-\frac{x^2}{b^2}=1 \]</div>
+      <p data-read="The graph is a hyperbola with center at the origin. The length of the transverse axis is 2a, and the length of the conjugate axis is 2b. The foci are a distance c from the origin, where c squared equals a squared plus b squared.">The graph is a hyperbola with center at the origin. The length of the transverse axis is 2a, and the length of the conjugate axis is 2b. The foci are a distance c from the origin, where c squared equals a squared plus b squared.</p>
+      <div class="math-display" role="math" aria-label="c squared equals a squared plus b squared" data-read="c squared equals a squared plus b squared">\[ c^2=a^2+b^2 \]</div>
+    </div>
+    <div class="equation-panel" aria-labelledby="hyperbola-shifted-heading">
+      <h3 id="hyperbola-shifted-heading" data-read="Equation of a hyperbola with center at h comma k">Equation of a Hyperbola with Center at <span class="math-inline" role="math" aria-label="h comma k">\((h,k)\)</span></h3>
+      <div class="math-display" role="math" aria-label="the quantity x minus h squared over a squared minus the quantity y minus k squared over b squared equals one, or the quantity y minus k squared over a squared minus the quantity x minus h squared over b squared equals one" data-read="the quantity x minus h squared over a squared minus the quantity y minus k squared over b squared equals one, or the quantity y minus k squared over a squared minus the quantity x minus h squared over b squared equals one">\[ \frac{(x-h)^2}{a^2}-\frac{(y-k)^2}{b^2}=1\qquad\text{or}\qquad\frac{(y-k)^2}{a^2}-\frac{(x-h)^2}{b^2}=1 \]</div>
+    </div>
+    <div class="figure-grid"><figure class="conic-figure" aria-labelledby="hyperbola-reference-horizontal-caption" aria-describedby="hyperbola-reference-horizontal-long" data-read="A horizontal hyperbola centered at the origin opens left and right. Its vertices are at plus or minus a on the x-axis, its foci at plus or minus c on the x-axis, and its conjugate-axis endpoints at plus or minus b on the y-axis. A dashed rectangle and the asymptotes y equals plus or minus b over a times x guide the branches.">
+  <svg viewBox="0 0 720 420" role="img" aria-labelledby="hyperbola-reference-horizontal-title hyperbola-reference-horizontal-desc" xmlns="http://www.w3.org/2000/svg">
+    <title id="hyperbola-reference-horizontal-title">Horizontal hyperbola centered at the origin</title>
+    <desc id="hyperbola-reference-horizontal-desc">A horizontal hyperbola centered at the origin opens left and right. Its vertices are at plus or minus a on the x-axis, its foci at plus or minus c on the x-axis, and its conjugate-axis endpoints at plus or minus b on the y-axis. A dashed rectangle and the asymptotes y equals plus or minus b over a times x guide the branches.</desc>
+    <style>.plot-bg{fill:#fff;stroke:#94a8c0;stroke-width:2}.grid{stroke:#d9e2ec;stroke-width:1}.axis{stroke:#22354f;stroke-width:2.4}.curve{fill:none;stroke:#c43d31;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.guide{stroke:#a4317a;stroke-width:2.2;stroke-dasharray:8 7}.point{fill:#0759b5;stroke:#fff;stroke-width:2}.tick{font:14px system-ui,sans-serif;fill:#364b68}.annotation{font:700 16px system-ui,sans-serif;fill:#20334f}</style>
+    <defs><clipPath id="hyperbola-reference-horizontal-clip"><rect x="62.0" y="34.0" width="620.0" height="340.0"/></clipPath></defs>
+    <rect x="62.0" y="34.0" width="620.0" height="340.0" class="plot-bg"/>
+    <g><line x1="124.00" y1="34.0" x2="124.00" y2="374.0" class="grid"/><line x1="248.00" y1="34.0" x2="248.00" y2="374.0" class="grid"/><line x1="372.00" y1="34.0" x2="372.00" y2="374.0" class="axis"/><line x1="496.00" y1="34.0" x2="496.00" y2="374.0" class="grid"/><line x1="620.00" y1="34.0" x2="620.00" y2="374.0" class="grid"/><line x1="62.0" y1="374.00" x2="682.0" y2="374.00" class="grid"/><line x1="62.0" y1="331.50" x2="682.0" y2="331.50" class="grid"/><line x1="62.0" y1="289.00" x2="682.0" y2="289.00" class="grid"/><line x1="62.0" y1="246.50" x2="682.0" y2="246.50" class="grid"/><line x1="62.0" y1="204.00" x2="682.0" y2="204.00" class="axis"/><line x1="62.0" y1="161.50" x2="682.0" y2="161.50" class="grid"/><line x1="62.0" y1="119.00" x2="682.0" y2="119.00" class="grid"/><line x1="62.0" y1="76.50" x2="682.0" y2="76.50" class="grid"/><line x1="62.0" y1="34.00" x2="682.0" y2="34.00" class="grid"/></g>
+    <g clip-path="url(#hyperbola-reference-horizontal-clip)"><line x1="93.00" y1="337.88" x2="651.00" y2="70.12" class="guide"/><line x1="93.00" y1="70.12" x2="651.00" y2="337.88" class="guide"/><line x1="248.00" y1="263.50" x2="496.00" y2="263.50" class="guide"/><line x1="496.00" y1="263.50" x2="496.00" y2="144.50" class="guide"/><line x1="496.00" y1="144.50" x2="248.00" y2="144.50" class="guide"/><line x1="248.00" y1="144.50" x2="248.00" y2="263.50" class="guide"/><path d="M1132.40,563.99 L1116.94,556.46 L1101.80,549.09 L1086.97,541.87 L1072.45,534.80 L1058.24,527.87 L1044.33,521.08 L1030.71,514.42 L1017.37,507.90 L1004.32,501.52 L991.54,495.26 L979.02,489.13 L966.77,483.12 L954.78,477.24 L943.05,471.47 L931.56,465.82 L920.31,460.28 L909.30,454.86 L898.52,449.54 L887.98,444.33 L877.65,439.22 L867.55,434.22 L857.66,429.32 L847.98,424.51 L838.51,419.80 L829.24,415.18 L820.17,410.66 L811.30,406.22 L802.61,401.87 L794.11,397.61 L785.80,393.43 L777.66,389.34 L769.70,385.32 L761.92,381.38 L754.30,377.52 L746.85,373.74 L739.56,370.03 L732.43,366.39 L725.46,362.82 L718.64,359.32 L711.97,355.89 L705.45,352.53 L699.07,349.22 L692.84,345.99 L686.74,342.81 L680.78,339.69 L674.96,336.64 L669.26,333.64 L663.70,330.69 L658.26,327.80 L652.95,324.97 L647.76,322.19 L642.68,319.45 L637.73,316.77 L632.89,314.14 L628.17,311.56 L623.55,309.02 L619.05,306.53 L614.65,304.08 L610.35,301.68 L606.16,299.31 L602.08,296.99 L598.09,294.71 L594.20,292.47 L590.41,290.27 L586.71,288.11 L583.10,285.98 L579.59,283.89 L576.16,281.83 L572.83,279.80 L569.58,277.81 L566.42,275.85 L563.34,273.92 L560.35,272.03 L557.43,270.16 L554.60,268.32 L551.85,266.51 L549.17,264.72 L546.58,262.96 L544.05,261.23 L541.61,259.52 L539.23,257.84 L536.93,256.18 L534.70,254.54 L532.54,252.93 L530.45,251.33 L528.43,249.76 L526.48,248.21 L524.59,246.67 L522.77,245.15 L521.02,243.66 L519.33,242.18 L517.70,240.71 L516.14,239.26 L514.64,237.83 L513.20,236.41 L511.83,235.01 L510.51,233.61 L509.25,232.24 L508.06,230.87 L506.92,229.52 L505.84,228.17 L504.82,226.84 L503.86,225.52 L502.95,224.20 L502.10,222.90 L501.31,221.60 L500.58,220.31 L499.90,219.03 L499.27,217.76 L498.70,216.49 L498.19,215.22 L497.73,213.96 L497.32,212.71 L496.97,211.46 L496.67,210.21 L496.43,208.96 L496.24,207.72 L496.11,206.48 L496.03,205.24 L496.00,204.00 L496.03,202.76 L496.11,201.52 L496.24,200.28 L496.43,199.04 L496.67,197.79 L496.97,196.54 L497.32,195.29 L497.73,194.04 L498.19,192.78 L498.70,191.51 L499.27,190.24 L499.90,188.97 L500.58,187.69 L501.31,186.40 L502.10,185.10 L502.95,183.80 L503.86,182.48 L504.82,181.16 L505.84,179.83 L506.92,178.48 L508.06,177.13 L509.25,175.76 L510.51,174.39 L511.83,172.99 L513.20,171.59 L514.64,170.17 L516.14,168.74 L517.70,167.29 L519.33,165.82 L521.02,164.34 L522.77,162.85 L524.59,161.33 L526.48,159.79 L528.43,158.24 L530.45,156.67 L532.54,155.07 L534.70,153.46 L536.93,151.82 L539.23,150.16 L541.61,148.48 L544.05,146.77 L546.58,145.04 L549.17,143.28 L551.85,141.49 L554.60,139.68 L557.43,137.84 L560.35,135.97 L563.34,134.08 L566.42,132.15 L569.58,130.19 L572.83,128.20 L576.16,126.17 L579.59,124.11 L583.10,122.02 L586.71,119.89 L590.41,117.73 L594.20,115.53 L598.09,113.29 L602.08,111.01 L606.16,108.69 L610.35,106.32 L614.65,103.92 L619.05,101.47 L623.55,98.98 L628.17,96.44 L632.89,93.86 L637.73,91.23 L642.68,88.55 L647.76,85.81 L652.95,83.03 L658.26,80.20 L663.70,77.31 L669.26,74.36 L674.96,71.36 L680.78,68.31 L686.74,65.19 L692.84,62.01 L699.07,58.78 L705.45,55.47 L711.97,52.11 L718.64,48.68 L725.46,45.18 L732.43,41.61 L739.56,37.97 L746.85,34.26 L754.30,30.48 L761.92,26.62 L769.70,22.68 L777.66,18.66 L785.80,14.57 L794.11,10.39 L802.61,6.13 L811.30,1.78 L820.17,-2.66 L829.24,-7.18 L838.51,-11.80 L847.98,-16.51 L857.66,-21.32 L867.55,-26.22 L877.65,-31.22 L887.98,-36.33 L898.52,-41.54 L909.30,-46.86 L920.31,-52.28 L931.56,-57.82 L943.05,-63.47 L954.78,-69.24 L966.77,-75.12 L979.02,-81.13 L991.54,-87.26 L1004.32,-93.52 L1017.37,-99.90 L1030.71,-106.42 L1044.33,-113.08 L1058.24,-119.87 L1072.45,-126.80 L1086.97,-133.87 L1101.80,-141.09 L1116.94,-148.46 L1132.40,-155.99" class="curve"/><path d="M-388.40,563.99 L-372.94,556.46 L-357.80,549.09 L-342.97,541.87 L-328.45,534.80 L-314.24,527.87 L-300.33,521.08 L-286.71,514.42 L-273.37,507.90 L-260.32,501.52 L-247.54,495.26 L-235.02,489.13 L-222.77,483.12 L-210.78,477.24 L-199.05,471.47 L-187.56,465.82 L-176.31,460.28 L-165.30,454.86 L-154.52,449.54 L-143.98,444.33 L-133.65,439.22 L-123.55,434.22 L-113.66,429.32 L-103.98,424.51 L-94.51,419.80 L-85.24,415.18 L-76.17,410.66 L-67.30,406.22 L-58.61,401.87 L-50.11,397.61 L-41.80,393.43 L-33.66,389.34 L-25.70,385.32 L-17.92,381.38 L-10.30,377.52 L-2.85,373.74 L4.44,370.03 L11.57,366.39 L18.54,362.82 L25.36,359.32 L32.03,355.89 L38.55,352.53 L44.93,349.22 L51.16,345.99 L57.26,342.81 L63.22,339.69 L69.04,336.64 L74.74,333.64 L80.30,330.69 L85.74,327.80 L91.05,324.97 L96.24,322.19 L101.32,319.45 L106.27,316.77 L111.11,314.14 L115.83,311.56 L120.45,309.02 L124.95,306.53 L129.35,304.08 L133.65,301.68 L137.84,299.31 L141.92,296.99 L145.91,294.71 L149.80,292.47 L153.59,290.27 L157.29,288.11 L160.90,285.98 L164.41,283.89 L167.84,281.83 L171.17,279.80 L174.42,277.81 L177.58,275.85 L180.66,273.92 L183.65,272.03 L186.57,270.16 L189.40,268.32 L192.15,266.51 L194.83,264.72 L197.42,262.96 L199.95,261.23 L202.39,259.52 L204.77,257.84 L207.07,256.18 L209.30,254.54 L211.46,252.93 L213.55,251.33 L215.57,249.76 L217.52,248.21 L219.41,246.67 L221.23,245.15 L222.98,243.66 L224.67,242.18 L226.30,240.71 L227.86,239.26 L229.36,237.83 L230.80,236.41 L232.17,235.01 L233.49,233.61 L234.75,232.24 L235.94,230.87 L237.08,229.52 L238.16,228.17 L239.18,226.84 L240.14,225.52 L241.05,224.20 L241.90,222.90 L242.69,221.60 L243.42,220.31 L244.10,219.03 L244.73,217.76 L245.30,216.49 L245.81,215.22 L246.27,213.96 L246.68,212.71 L247.03,211.46 L247.33,210.21 L247.57,208.96 L247.76,207.72 L247.89,206.48 L247.97,205.24 L248.00,204.00 L247.97,202.76 L247.89,201.52 L247.76,200.28 L247.57,199.04 L247.33,197.79 L247.03,196.54 L246.68,195.29 L246.27,194.04 L245.81,192.78 L245.30,191.51 L244.73,190.24 L244.10,188.97 L243.42,187.69 L242.69,186.40 L241.90,185.10 L241.05,183.80 L240.14,182.48 L239.18,181.16 L238.16,179.83 L237.08,178.48 L235.94,177.13 L234.75,175.76 L233.49,174.39 L232.17,172.99 L230.80,171.59 L229.36,170.17 L227.86,168.74 L226.30,167.29 L224.67,165.82 L222.98,164.34 L221.23,162.85 L219.41,161.33 L217.52,159.79 L215.57,158.24 L213.55,156.67 L211.46,155.07 L209.30,153.46 L207.07,151.82 L204.77,150.16 L202.39,148.48 L199.95,146.77 L197.42,145.04 L194.83,143.28 L192.15,141.49 L189.40,139.68 L186.57,137.84 L183.65,135.97 L180.66,134.08 L177.58,132.15 L174.42,130.19 L171.17,128.20 L167.84,126.17 L164.41,124.11 L160.90,122.02 L157.29,119.89 L153.59,117.73 L149.80,115.53 L145.91,113.29 L141.92,111.01 L137.84,108.69 L133.65,106.32 L129.35,103.92 L124.95,101.47 L120.45,98.98 L115.83,96.44 L111.11,93.86 L106.27,91.23 L101.32,88.55 L96.24,85.81 L91.05,83.03 L85.74,80.20 L80.30,77.31 L74.74,74.36 L69.04,71.36 L63.22,68.31 L57.26,65.19 L51.16,62.01 L44.93,58.78 L38.55,55.47 L32.03,52.11 L25.36,48.68 L18.54,45.18 L11.57,41.61 L4.44,37.97 L-2.85,34.26 L-10.30,30.48 L-17.92,26.62 L-25.70,22.68 L-33.66,18.66 L-41.80,14.57 L-50.11,10.39 L-58.61,6.13 L-67.30,1.78 L-76.17,-2.66 L-85.24,-7.18 L-94.51,-11.80 L-103.98,-16.51 L-113.66,-21.32 L-123.55,-26.22 L-133.65,-31.22 L-143.98,-36.33 L-154.52,-41.54 L-165.30,-46.86 L-176.31,-52.28 L-187.56,-57.82 L-199.05,-63.47 L-210.78,-69.24 L-222.77,-75.12 L-235.02,-81.13 L-247.54,-87.26 L-260.32,-93.52 L-273.37,-99.90 L-286.71,-106.42 L-300.33,-113.08 L-314.24,-119.87 L-328.45,-126.80 L-342.97,-133.87 L-357.80,-141.09 L-372.94,-148.46 L-388.40,-155.99" class="curve"/></g>
+    <g><circle cx="248.00" cy="204.00" r="5" class="point"/><circle cx="496.00" cy="204.00" r="5" class="point"/><circle cx="372.00" cy="144.50" r="5" class="point"/><circle cx="372.00" cy="263.50" r="5" class="point"/><circle cx="220.64" cy="204.00" r="5" class="point"/><circle cx="523.36" cy="204.00" r="5" class="point"/><text x="240.00" y="224.00" text-anchor="end" class="annotation">V&#x27;(-a,0)</text><text x="504.00" y="224.00" text-anchor="start" class="annotation">V(a,0)</text><text x="212.64" y="194.00" text-anchor="end" class="annotation">F&#x27;(-c,0)</text><text x="531.36" y="194.00" text-anchor="start" class="annotation">F(c,0)</text><text x="380.00" y="135.50" text-anchor="start" class="annotation">W(0,b)</text><text x="380.00" y="283.50" text-anchor="start" class="annotation">W&#x27;(0,-b)</text></g>
+    <text x="674.0" y="194.00" text-anchor="end" class="annotation">x</text>
+    <text x="383.00" y="53.0" class="annotation">y</text>
+  </svg>
+  <figcaption id="hyperbola-reference-horizontal-caption">Horizontal hyperbola with vertices, foci, conjugate-axis endpoints, construction rectangle, and asymptotes <span class="math-inline" role="math" aria-label="y equals negative b over a times x">\(y=-\frac{b}{a}x\)</span> and <span class="math-inline" role="math" aria-label="y equals b over a times x">\(y=\frac{b}{a}x\)</span>.</figcaption>
+  <p class="diagram-description" id="hyperbola-reference-horizontal-long">The diagram uses symbolic labels rather than a numeric scale. A horizontal hyperbola centered at the origin opens left and right. Its vertices are at plus or minus a on the x-axis, its foci at plus or minus c on the x-axis, and its conjugate-axis endpoints at plus or minus b on the y-axis. A dashed rectangle and the asymptotes y equals plus or minus b over a times x guide the branches.</p>
+</figure><figure class="conic-figure" aria-labelledby="hyperbola-reference-vertical-caption" aria-describedby="hyperbola-reference-vertical-long" data-read="A vertical hyperbola centered at the origin opens upward and downward. Its vertices are at plus or minus a on the y-axis, its foci at plus or minus c on the y-axis, and its conjugate-axis endpoints at plus or minus b on the x-axis. A dashed rectangle and the asymptotes y equals plus or minus a over b times x guide the branches.">
+  <svg viewBox="0 0 720 420" role="img" aria-labelledby="hyperbola-reference-vertical-title hyperbola-reference-vertical-desc" xmlns="http://www.w3.org/2000/svg">
+    <title id="hyperbola-reference-vertical-title">Vertical hyperbola centered at the origin</title>
+    <desc id="hyperbola-reference-vertical-desc">A vertical hyperbola centered at the origin opens upward and downward. Its vertices are at plus or minus a on the y-axis, its foci at plus or minus c on the y-axis, and its conjugate-axis endpoints at plus or minus b on the x-axis. A dashed rectangle and the asymptotes y equals plus or minus a over b times x guide the branches.</desc>
+    <style>.plot-bg{fill:#fff;stroke:#94a8c0;stroke-width:2}.grid{stroke:#d9e2ec;stroke-width:1}.axis{stroke:#22354f;stroke-width:2.4}.curve{fill:none;stroke:#c43d31;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.guide{stroke:#a4317a;stroke-width:2.2;stroke-dasharray:8 7}.point{fill:#0759b5;stroke:#fff;stroke-width:2}.tick{font:14px system-ui,sans-serif;fill:#364b68}.annotation{font:700 16px system-ui,sans-serif;fill:#20334f}</style>
+    <defs><clipPath id="hyperbola-reference-vertical-clip"><rect x="62.0" y="34.0" width="620.0" height="340.0"/></clipPath></defs>
+    <rect x="62.0" y="34.0" width="620.0" height="340.0" class="plot-bg"/>
+    <g><line x1="62.00" y1="34.0" x2="62.00" y2="374.0" class="grid"/><line x1="139.50" y1="34.0" x2="139.50" y2="374.0" class="grid"/><line x1="217.00" y1="34.0" x2="217.00" y2="374.0" class="grid"/><line x1="294.50" y1="34.0" x2="294.50" y2="374.0" class="grid"/><line x1="372.00" y1="34.0" x2="372.00" y2="374.0" class="axis"/><line x1="449.50" y1="34.0" x2="449.50" y2="374.0" class="grid"/><line x1="527.00" y1="34.0" x2="527.00" y2="374.0" class="grid"/><line x1="604.50" y1="34.0" x2="604.50" y2="374.0" class="grid"/><line x1="682.00" y1="34.0" x2="682.00" y2="374.0" class="grid"/><line x1="62.0" y1="340.00" x2="682.0" y2="340.00" class="grid"/><line x1="62.0" y1="272.00" x2="682.0" y2="272.00" class="grid"/><line x1="62.0" y1="204.00" x2="682.0" y2="204.00" class="axis"/><line x1="62.0" y1="136.00" x2="682.0" y2="136.00" class="grid"/><line x1="62.0" y1="68.00" x2="682.0" y2="68.00" class="grid"/></g>
+    <g clip-path="url(#hyperbola-reference-vertical-clip)"><line x1="23.25" y1="422.57" x2="720.75" y2="-14.57" class="guide"/><line x1="23.25" y1="-14.57" x2="720.75" y2="422.57" class="guide"/><line x1="263.50" y1="272.00" x2="480.50" y2="272.00" class="guide"/><line x1="480.50" y1="272.00" x2="480.50" y2="136.00" class="guide"/><line x1="480.50" y1="136.00" x2="263.50" y2="136.00" class="guide"/><line x1="263.50" y1="136.00" x2="263.50" y2="272.00" class="guide"/><path d="M-284.45,-213.00 L-270.73,-204.51 L-257.29,-196.21 L-244.12,-188.08 L-231.22,-180.12 L-218.58,-172.33 L-206.20,-164.70 L-194.07,-157.23 L-182.18,-149.91 L-170.53,-142.75 L-159.12,-135.75 L-147.95,-128.88 L-136.99,-122.17 L-126.26,-115.59 L-115.74,-109.15 L-105.44,-102.85 L-95.34,-96.69 L-85.45,-90.65 L-75.75,-84.74 L-66.25,-78.96 L-56.94,-73.29 L-47.81,-67.75 L-38.87,-62.33 L-30.10,-57.02 L-21.51,-51.83 L-13.10,-46.75 L-4.84,-41.77 L3.25,-36.90 L11.17,-32.14 L18.95,-27.48 L26.57,-22.92 L34.03,-18.46 L41.36,-14.10 L48.53,-9.83 L55.57,-5.65 L62.47,-1.56 L69.24,2.44 L75.88,6.34 L82.38,10.17 L88.76,13.91 L95.02,17.57 L101.16,21.14 L107.18,24.64 L113.08,28.06 L118.88,31.40 L124.56,34.67 L130.13,37.86 L135.61,40.98 L140.97,44.04 L146.24,47.02 L151.41,49.93 L156.48,52.78 L161.46,55.56 L166.35,58.28 L171.15,60.93 L175.87,63.52 L180.49,66.05 L185.04,68.52 L189.50,70.94 L193.89,73.29 L198.19,75.59 L202.42,77.83 L206.58,80.02 L210.67,82.15 L214.68,84.23 L218.63,86.26 L222.51,88.23 L226.33,90.16 L230.08,92.04 L233.77,93.87 L237.40,95.65 L240.97,97.38 L244.49,99.07 L247.95,100.71 L251.36,102.31 L254.71,103.86 L258.02,105.37 L261.27,106.84 L264.48,108.26 L267.64,109.65 L270.75,110.99 L273.82,112.29 L276.85,113.55 L279.83,114.78 L282.78,115.96 L285.69,117.11 L288.56,118.22 L291.39,119.29 L294.19,120.32 L296.95,121.32 L299.69,122.28 L302.39,123.21 L305.06,124.10 L307.70,124.96 L310.31,125.78 L312.90,126.57 L315.46,127.32 L318.00,128.04 L320.51,128.73 L323.00,129.39 L325.47,130.01 L327.92,130.60 L330.35,131.16 L332.76,131.69 L335.16,132.19 L337.54,132.65 L339.90,133.09 L342.25,133.49 L344.59,133.86 L346.92,134.21 L349.23,134.52 L351.54,134.80 L353.83,135.05 L356.12,135.28 L358.40,135.47 L360.68,135.63 L362.95,135.76 L365.21,135.87 L367.48,135.94 L369.74,135.99 L372.00,136.00 L374.26,135.99 L376.52,135.94 L378.79,135.87 L381.05,135.76 L383.32,135.63 L385.60,135.47 L387.88,135.28 L390.17,135.05 L392.46,134.80 L394.77,134.52 L397.08,134.21 L399.41,133.86 L401.75,133.49 L404.10,133.09 L406.46,132.65 L408.84,132.19 L411.24,131.69 L413.65,131.16 L416.08,130.60 L418.53,130.01 L421.00,129.39 L423.49,128.73 L426.00,128.04 L428.54,127.32 L431.10,126.57 L433.69,125.78 L436.30,124.96 L438.94,124.10 L441.61,123.21 L444.31,122.28 L447.05,121.32 L449.81,120.32 L452.61,119.29 L455.44,118.22 L458.31,117.11 L461.22,115.96 L464.17,114.78 L467.15,113.55 L470.18,112.29 L473.25,110.99 L476.36,109.65 L479.52,108.26 L482.73,106.84 L485.98,105.37 L489.29,103.86 L492.64,102.31 L496.05,100.71 L499.51,99.07 L503.03,97.38 L506.60,95.65 L510.23,93.87 L513.92,92.04 L517.67,90.16 L521.49,88.23 L525.37,86.26 L529.32,84.23 L533.33,82.15 L537.42,80.02 L541.58,77.83 L545.81,75.59 L550.11,73.29 L554.50,70.94 L558.96,68.52 L563.51,66.05 L568.13,63.52 L572.85,60.93 L577.65,58.28 L582.54,55.56 L587.52,52.78 L592.59,49.93 L597.76,47.02 L603.03,44.04 L608.39,40.98 L613.87,37.86 L619.44,34.67 L625.12,31.40 L630.92,28.06 L636.82,24.64 L642.84,21.14 L648.98,17.57 L655.24,13.91 L661.62,10.17 L668.12,6.34 L674.76,2.44 L681.53,-1.56 L688.43,-5.65 L695.47,-9.83 L702.64,-14.10 L709.97,-18.46 L717.43,-22.92 L725.05,-27.48 L732.83,-32.14 L740.75,-36.90 L748.84,-41.77 L757.10,-46.75 L765.51,-51.83 L774.10,-57.02 L782.87,-62.33 L791.81,-67.75 L800.94,-73.29 L810.25,-78.96 L819.75,-84.74 L829.45,-90.65 L839.34,-96.69 L849.44,-102.85 L859.74,-109.15 L870.26,-115.59 L880.99,-122.17 L891.95,-128.88 L903.12,-135.75 L914.53,-142.75 L926.18,-149.91 L938.07,-157.23 L950.20,-164.70 L962.58,-172.33 L975.22,-180.12 L988.12,-188.08 L1001.29,-196.21 L1014.73,-204.51 L1028.45,-213.00" class="curve"/><path d="M-284.45,621.00 L-270.73,612.51 L-257.29,604.21 L-244.12,596.08 L-231.22,588.12 L-218.58,580.33 L-206.20,572.70 L-194.07,565.23 L-182.18,557.91 L-170.53,550.75 L-159.12,543.75 L-147.95,536.88 L-136.99,530.17 L-126.26,523.59 L-115.74,517.15 L-105.44,510.85 L-95.34,504.69 L-85.45,498.65 L-75.75,492.74 L-66.25,486.96 L-56.94,481.29 L-47.81,475.75 L-38.87,470.33 L-30.10,465.02 L-21.51,459.83 L-13.10,454.75 L-4.84,449.77 L3.25,444.90 L11.17,440.14 L18.95,435.48 L26.57,430.92 L34.03,426.46 L41.36,422.10 L48.53,417.83 L55.57,413.65 L62.47,409.56 L69.24,405.56 L75.88,401.66 L82.38,397.83 L88.76,394.09 L95.02,390.43 L101.16,386.86 L107.18,383.36 L113.08,379.94 L118.88,376.60 L124.56,373.33 L130.13,370.14 L135.61,367.02 L140.97,363.96 L146.24,360.98 L151.41,358.07 L156.48,355.22 L161.46,352.44 L166.35,349.72 L171.15,347.07 L175.87,344.48 L180.49,341.95 L185.04,339.48 L189.50,337.06 L193.89,334.71 L198.19,332.41 L202.42,330.17 L206.58,327.98 L210.67,325.85 L214.68,323.77 L218.63,321.74 L222.51,319.77 L226.33,317.84 L230.08,315.96 L233.77,314.13 L237.40,312.35 L240.97,310.62 L244.49,308.93 L247.95,307.29 L251.36,305.69 L254.71,304.14 L258.02,302.63 L261.27,301.16 L264.48,299.74 L267.64,298.35 L270.75,297.01 L273.82,295.71 L276.85,294.45 L279.83,293.22 L282.78,292.04 L285.69,290.89 L288.56,289.78 L291.39,288.71 L294.19,287.68 L296.95,286.68 L299.69,285.72 L302.39,284.79 L305.06,283.90 L307.70,283.04 L310.31,282.22 L312.90,281.43 L315.46,280.68 L318.00,279.96 L320.51,279.27 L323.00,278.61 L325.47,277.99 L327.92,277.40 L330.35,276.84 L332.76,276.31 L335.16,275.81 L337.54,275.35 L339.90,274.91 L342.25,274.51 L344.59,274.14 L346.92,273.79 L349.23,273.48 L351.54,273.20 L353.83,272.95 L356.12,272.72 L358.40,272.53 L360.68,272.37 L362.95,272.24 L365.21,272.13 L367.48,272.06 L369.74,272.01 L372.00,272.00 L374.26,272.01 L376.52,272.06 L378.79,272.13 L381.05,272.24 L383.32,272.37 L385.60,272.53 L387.88,272.72 L390.17,272.95 L392.46,273.20 L394.77,273.48 L397.08,273.79 L399.41,274.14 L401.75,274.51 L404.10,274.91 L406.46,275.35 L408.84,275.81 L411.24,276.31 L413.65,276.84 L416.08,277.40 L418.53,277.99 L421.00,278.61 L423.49,279.27 L426.00,279.96 L428.54,280.68 L431.10,281.43 L433.69,282.22 L436.30,283.04 L438.94,283.90 L441.61,284.79 L444.31,285.72 L447.05,286.68 L449.81,287.68 L452.61,288.71 L455.44,289.78 L458.31,290.89 L461.22,292.04 L464.17,293.22 L467.15,294.45 L470.18,295.71 L473.25,297.01 L476.36,298.35 L479.52,299.74 L482.73,301.16 L485.98,302.63 L489.29,304.14 L492.64,305.69 L496.05,307.29 L499.51,308.93 L503.03,310.62 L506.60,312.35 L510.23,314.13 L513.92,315.96 L517.67,317.84 L521.49,319.77 L525.37,321.74 L529.32,323.77 L533.33,325.85 L537.42,327.98 L541.58,330.17 L545.81,332.41 L550.11,334.71 L554.50,337.06 L558.96,339.48 L563.51,341.95 L568.13,344.48 L572.85,347.07 L577.65,349.72 L582.54,352.44 L587.52,355.22 L592.59,358.07 L597.76,360.98 L603.03,363.96 L608.39,367.02 L613.87,370.14 L619.44,373.33 L625.12,376.60 L630.92,379.94 L636.82,383.36 L642.84,386.86 L648.98,390.43 L655.24,394.09 L661.62,397.83 L668.12,401.66 L674.76,405.56 L681.53,409.56 L688.43,413.65 L695.47,417.83 L702.64,422.10 L709.97,426.46 L717.43,430.92 L725.05,435.48 L732.83,440.14 L740.75,444.90 L748.84,449.77 L757.10,454.75 L765.51,459.83 L774.10,465.02 L782.87,470.33 L791.81,475.75 L800.94,481.29 L810.25,486.96 L819.75,492.74 L829.45,498.65 L839.34,504.69 L849.44,510.85 L859.74,517.15 L870.26,523.59 L880.99,530.17 L891.95,536.88 L903.12,543.75 L914.53,550.75 L926.18,557.91 L938.07,565.23 L950.20,572.70 L962.58,580.33 L975.22,588.12 L988.12,596.08 L1001.29,604.21 L1014.73,612.51 L1028.45,621.00" class="curve"/></g>
+    <g><circle cx="372.00" cy="272.00" r="5" class="point"/><circle cx="372.00" cy="136.00" r="5" class="point"/><circle cx="263.50" cy="204.00" r="5" class="point"/><circle cx="480.50" cy="204.00" r="5" class="point"/><circle cx="372.00" cy="287.00" r="5" class="point"/><circle cx="372.00" cy="121.00" r="5" class="point"/><text x="364.00" y="294.00" text-anchor="end" class="annotation">V&#x27;(0,-a)</text><text x="380.00" y="127.00" text-anchor="start" class="annotation">V(0,a)</text><text x="380.00" y="309.00" text-anchor="start" class="annotation">F&#x27;(0,-c)</text><text x="380.00" y="112.00" text-anchor="start" class="annotation">F(0,c)</text><text x="255.50" y="224.00" text-anchor="end" class="annotation">W&#x27;(-b,0)</text><text x="488.50" y="224.00" text-anchor="start" class="annotation">W(b,0)</text></g>
+    <text x="674.0" y="194.00" text-anchor="end" class="annotation">x</text>
+    <text x="383.00" y="53.0" class="annotation">y</text>
+  </svg>
+  <figcaption id="hyperbola-reference-vertical-caption">Vertical hyperbola with vertices, foci, conjugate-axis endpoints, construction rectangle, and asymptotes <span class="math-inline" role="math" aria-label="y equals negative a over b times x">\(y=-\frac{a}{b}x\)</span> and <span class="math-inline" role="math" aria-label="y equals a over b times x">\(y=\frac{a}{b}x\)</span>.</figcaption>
+  <p class="diagram-description" id="hyperbola-reference-vertical-long">The diagram uses symbolic labels rather than a numeric scale. A vertical hyperbola centered at the origin opens upward and downward. Its vertices are at plus or minus a on the y-axis, its foci at plus or minus c on the y-axis, and its conjugate-axis endpoints at plus or minus b on the x-axis. A dashed rectangle and the asymptotes y equals plus or minus a over b times x guide the branches.</p>
+</figure></div>
+  </section>
+</article><article class="exercise-card topic-card source-content" id="practice-worksheet" aria-labelledby="practice-worksheet-heading">
+  <div class="source-page-identity" role="note" data-source-file="Worksheet_for_Conics.pdf" data-source-page="1" data-read="Source page 1 of Worksheet_for_Conics.pdf. Practice Worksheet for Conic Sections (or Conics).">
+  <span class="source-page-number">Worksheet_for_Conics.pdf - source page 1</span>
+  <strong>Practice Worksheet for Conic Sections (or Conics)</strong>
+</div>
+  <h2 id="practice-worksheet-heading" data-read="Practice Worksheet for Conic Sections (or Conics)">Practice Worksheet for Conic Sections (or Conics)</h2>
+  <p data-read="Identify each of the following as one of the conic sections: circle, parabola, ellipse, or hyperbola. Sketch the graph.">Identify each of the following as one of the conic sections: circle, parabola, ellipse, or hyperbola. Sketch the graph.</p>
+  <div class="problem-grid"><section class="problem-card" data-problem="1" aria-labelledby="practice-problem-1-heading">
+  <h3 id="practice-problem-1-heading" data-read="Problem 1">Problem 1</h3>
+  <div class="math-display" role="math" aria-label="Problem 1. y squared equals five minus the quantity x plus three squared." data-read="Problem 1. y squared equals five minus the quantity x plus three squared.">\[ y^2=5-(x+3)^2 \]</div>
+  <div class="answer-space" role="group" aria-label="Classification and algebra work space for Conic Sections problem 1." data-read="Classification and algebra work space for Conic Sections problem 1." style="min-height:5rem;"></div>
+  <div class="graph-workspace"><figure class="conic-figure compact" aria-labelledby="practice-grid-1-caption" aria-describedby="practice-grid-1-long" data-read="Blank coordinate grid for sketching the conic in practice problem 1.">
+  <svg viewBox="0 0 720 420" role="img" aria-labelledby="practice-grid-1-title practice-grid-1-desc" xmlns="http://www.w3.org/2000/svg">
+    <title id="practice-grid-1-title">Graphing workspace for problem 1</title>
+    <desc id="practice-grid-1-desc">Blank coordinate grid for sketching the conic in practice problem 1.</desc>
+    <style>.plot-bg{fill:#fff;stroke:#94a8c0;stroke-width:2}.grid{stroke:#d9e2ec;stroke-width:1}.axis{stroke:#22354f;stroke-width:2.4}.curve{fill:none;stroke:#c43d31;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.guide{stroke:#a4317a;stroke-width:2.2;stroke-dasharray:8 7}.point{fill:#0759b5;stroke:#fff;stroke-width:2}.tick{font:14px system-ui,sans-serif;fill:#364b68}.annotation{font:700 16px system-ui,sans-serif;fill:#20334f}</style>
+    <defs><clipPath id="practice-grid-1-clip"><rect x="62.0" y="34.0" width="620.0" height="340.0"/></clipPath></defs>
+    <rect x="62.0" y="34.0" width="620.0" height="340.0" class="plot-bg"/>
+    <g><line x1="62.00" y1="34.0" x2="62.00" y2="374.0" class="grid"/><text x="62.00" y="223.00" text-anchor="middle" class="tick">-10</text><line x1="217.00" y1="34.0" x2="217.00" y2="374.0" class="grid"/><text x="217.00" y="223.00" text-anchor="middle" class="tick">-5</text><line x1="372.00" y1="34.0" x2="372.00" y2="374.0" class="axis"/><line x1="527.00" y1="34.0" x2="527.00" y2="374.0" class="grid"/><text x="527.00" y="223.00" text-anchor="middle" class="tick">5</text><line x1="682.00" y1="34.0" x2="682.00" y2="374.0" class="grid"/><text x="682.00" y="223.00" text-anchor="middle" class="tick">10</text><line x1="62.0" y1="374.00" x2="682.0" y2="374.00" class="grid"/><text x="364.00" y="379.00" text-anchor="end" class="tick">-10</text><line x1="62.0" y1="289.00" x2="682.0" y2="289.00" class="grid"/><text x="364.00" y="294.00" text-anchor="end" class="tick">-5</text><line x1="62.0" y1="204.00" x2="682.0" y2="204.00" class="axis"/><line x1="62.0" y1="119.00" x2="682.0" y2="119.00" class="grid"/><text x="364.00" y="124.00" text-anchor="end" class="tick">5</text><line x1="62.0" y1="34.00" x2="682.0" y2="34.00" class="grid"/><text x="364.00" y="39.00" text-anchor="end" class="tick">10</text></g>
+    <g clip-path="url(#practice-grid-1-clip)"></g>
+    <g></g>
+    <text x="674.0" y="194.00" text-anchor="end" class="annotation">x</text>
+    <text x="383.00" y="53.0" class="annotation">y</text>
+  </svg>
+  <figcaption id="practice-grid-1-caption">Graphing workspace for Problem 1.</figcaption>
+  <p class="diagram-description" id="practice-grid-1-long">Grid values are labeled on both axes. The horizontal x-axis and vertical y-axis run from negative ten to ten and meet at the origin. Use the grid to sketch the requested conic.</p>
+</figure></div>
+</section><section class="problem-card" data-problem="2" aria-labelledby="practice-problem-2-heading">
+  <h3 id="practice-problem-2-heading" data-read="Problem 2">Problem 2</h3>
+  <div class="math-display" role="math" aria-label="Problem 2. four x squared plus nine y squared equals thirty-six." data-read="Problem 2. four x squared plus nine y squared equals thirty-six.">\[ 4x^2+9y^2=36 \]</div>
+  <div class="answer-space" role="group" aria-label="Classification and algebra work space for Conic Sections problem 2." data-read="Classification and algebra work space for Conic Sections problem 2." style="min-height:5rem;"></div>
+  <div class="graph-workspace"><figure class="conic-figure compact" aria-labelledby="practice-grid-2-caption" aria-describedby="practice-grid-2-long" data-read="Blank coordinate grid for sketching the conic in practice problem 2.">
+  <svg viewBox="0 0 720 420" role="img" aria-labelledby="practice-grid-2-title practice-grid-2-desc" xmlns="http://www.w3.org/2000/svg">
+    <title id="practice-grid-2-title">Graphing workspace for problem 2</title>
+    <desc id="practice-grid-2-desc">Blank coordinate grid for sketching the conic in practice problem 2.</desc>
+    <style>.plot-bg{fill:#fff;stroke:#94a8c0;stroke-width:2}.grid{stroke:#d9e2ec;stroke-width:1}.axis{stroke:#22354f;stroke-width:2.4}.curve{fill:none;stroke:#c43d31;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.guide{stroke:#a4317a;stroke-width:2.2;stroke-dasharray:8 7}.point{fill:#0759b5;stroke:#fff;stroke-width:2}.tick{font:14px system-ui,sans-serif;fill:#364b68}.annotation{font:700 16px system-ui,sans-serif;fill:#20334f}</style>
+    <defs><clipPath id="practice-grid-2-clip"><rect x="62.0" y="34.0" width="620.0" height="340.0"/></clipPath></defs>
+    <rect x="62.0" y="34.0" width="620.0" height="340.0" class="plot-bg"/>
+    <g><line x1="62.00" y1="34.0" x2="62.00" y2="374.0" class="grid"/><text x="62.00" y="223.00" text-anchor="middle" class="tick">-10</text><line x1="217.00" y1="34.0" x2="217.00" y2="374.0" class="grid"/><text x="217.00" y="223.00" text-anchor="middle" class="tick">-5</text><line x1="372.00" y1="34.0" x2="372.00" y2="374.0" class="axis"/><line x1="527.00" y1="34.0" x2="527.00" y2="374.0" class="grid"/><text x="527.00" y="223.00" text-anchor="middle" class="tick">5</text><line x1="682.00" y1="34.0" x2="682.00" y2="374.0" class="grid"/><text x="682.00" y="223.00" text-anchor="middle" class="tick">10</text><line x1="62.0" y1="374.00" x2="682.0" y2="374.00" class="grid"/><text x="364.00" y="379.00" text-anchor="end" class="tick">-10</text><line x1="62.0" y1="289.00" x2="682.0" y2="289.00" class="grid"/><text x="364.00" y="294.00" text-anchor="end" class="tick">-5</text><line x1="62.0" y1="204.00" x2="682.0" y2="204.00" class="axis"/><line x1="62.0" y1="119.00" x2="682.0" y2="119.00" class="grid"/><text x="364.00" y="124.00" text-anchor="end" class="tick">5</text><line x1="62.0" y1="34.00" x2="682.0" y2="34.00" class="grid"/><text x="364.00" y="39.00" text-anchor="end" class="tick">10</text></g>
+    <g clip-path="url(#practice-grid-2-clip)"></g>
+    <g></g>
+    <text x="674.0" y="194.00" text-anchor="end" class="annotation">x</text>
+    <text x="383.00" y="53.0" class="annotation">y</text>
+  </svg>
+  <figcaption id="practice-grid-2-caption">Graphing workspace for Problem 2.</figcaption>
+  <p class="diagram-description" id="practice-grid-2-long">Grid values are labeled on both axes. The horizontal x-axis and vertical y-axis run from negative ten to ten and meet at the origin. Use the grid to sketch the requested conic.</p>
+</figure></div>
+</section><section class="problem-card" data-problem="3" aria-labelledby="practice-problem-3-heading">
+  <h3 id="practice-problem-3-heading" data-read="Problem 3">Problem 3</h3>
+  <div class="math-display" role="math" aria-label="Problem 3. the quantity x minus three squared over two, minus the quantity y plus two squared over eight, equals two." data-read="Problem 3. the quantity x minus three squared over two, minus the quantity y plus two squared over eight, equals two.">\[ \frac{(x-3)^2}{2}-\frac{(y+2)^2}{8}=2 \]</div>
+  <div class="answer-space" role="group" aria-label="Classification and algebra work space for Conic Sections problem 3." data-read="Classification and algebra work space for Conic Sections problem 3." style="min-height:5rem;"></div>
+  <div class="graph-workspace"><figure class="conic-figure compact" aria-labelledby="practice-grid-3-caption" aria-describedby="practice-grid-3-long" data-read="Blank coordinate grid for sketching the conic in practice problem 3.">
+  <svg viewBox="0 0 720 420" role="img" aria-labelledby="practice-grid-3-title practice-grid-3-desc" xmlns="http://www.w3.org/2000/svg">
+    <title id="practice-grid-3-title">Graphing workspace for problem 3</title>
+    <desc id="practice-grid-3-desc">Blank coordinate grid for sketching the conic in practice problem 3.</desc>
+    <style>.plot-bg{fill:#fff;stroke:#94a8c0;stroke-width:2}.grid{stroke:#d9e2ec;stroke-width:1}.axis{stroke:#22354f;stroke-width:2.4}.curve{fill:none;stroke:#c43d31;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.guide{stroke:#a4317a;stroke-width:2.2;stroke-dasharray:8 7}.point{fill:#0759b5;stroke:#fff;stroke-width:2}.tick{font:14px system-ui,sans-serif;fill:#364b68}.annotation{font:700 16px system-ui,sans-serif;fill:#20334f}</style>
+    <defs><clipPath id="practice-grid-3-clip"><rect x="62.0" y="34.0" width="620.0" height="340.0"/></clipPath></defs>
+    <rect x="62.0" y="34.0" width="620.0" height="340.0" class="plot-bg"/>
+    <g><line x1="62.00" y1="34.0" x2="62.00" y2="374.0" class="grid"/><text x="62.00" y="223.00" text-anchor="middle" class="tick">-10</text><line x1="217.00" y1="34.0" x2="217.00" y2="374.0" class="grid"/><text x="217.00" y="223.00" text-anchor="middle" class="tick">-5</text><line x1="372.00" y1="34.0" x2="372.00" y2="374.0" class="axis"/><line x1="527.00" y1="34.0" x2="527.00" y2="374.0" class="grid"/><text x="527.00" y="223.00" text-anchor="middle" class="tick">5</text><line x1="682.00" y1="34.0" x2="682.00" y2="374.0" class="grid"/><text x="682.00" y="223.00" text-anchor="middle" class="tick">10</text><line x1="62.0" y1="374.00" x2="682.0" y2="374.00" class="grid"/><text x="364.00" y="379.00" text-anchor="end" class="tick">-10</text><line x1="62.0" y1="289.00" x2="682.0" y2="289.00" class="grid"/><text x="364.00" y="294.00" text-anchor="end" class="tick">-5</text><line x1="62.0" y1="204.00" x2="682.0" y2="204.00" class="axis"/><line x1="62.0" y1="119.00" x2="682.0" y2="119.00" class="grid"/><text x="364.00" y="124.00" text-anchor="end" class="tick">5</text><line x1="62.0" y1="34.00" x2="682.0" y2="34.00" class="grid"/><text x="364.00" y="39.00" text-anchor="end" class="tick">10</text></g>
+    <g clip-path="url(#practice-grid-3-clip)"></g>
+    <g></g>
+    <text x="674.0" y="194.00" text-anchor="end" class="annotation">x</text>
+    <text x="383.00" y="53.0" class="annotation">y</text>
+  </svg>
+  <figcaption id="practice-grid-3-caption">Graphing workspace for Problem 3.</figcaption>
+  <p class="diagram-description" id="practice-grid-3-long">Grid values are labeled on both axes. The horizontal x-axis and vertical y-axis run from negative ten to ten and meet at the origin. Use the grid to sketch the requested conic.</p>
+</figure></div>
+</section><section class="problem-card" data-problem="4" aria-labelledby="practice-problem-4-heading">
+  <h3 id="practice-problem-4-heading" data-read="Problem 4">Problem 4</h3>
+  <div class="math-display" role="math" aria-label="Problem 4. one third times the quantity x plus two equals y squared." data-read="Problem 4. one third times the quantity x plus two equals y squared.">\[ \frac13(x+2)=y^2 \]</div>
+  <div class="answer-space" role="group" aria-label="Classification and algebra work space for Conic Sections problem 4." data-read="Classification and algebra work space for Conic Sections problem 4." style="min-height:5rem;"></div>
+  <div class="graph-workspace"><figure class="conic-figure compact" aria-labelledby="practice-grid-4-caption" aria-describedby="practice-grid-4-long" data-read="Blank coordinate grid for sketching the conic in practice problem 4.">
+  <svg viewBox="0 0 720 420" role="img" aria-labelledby="practice-grid-4-title practice-grid-4-desc" xmlns="http://www.w3.org/2000/svg">
+    <title id="practice-grid-4-title">Graphing workspace for problem 4</title>
+    <desc id="practice-grid-4-desc">Blank coordinate grid for sketching the conic in practice problem 4.</desc>
+    <style>.plot-bg{fill:#fff;stroke:#94a8c0;stroke-width:2}.grid{stroke:#d9e2ec;stroke-width:1}.axis{stroke:#22354f;stroke-width:2.4}.curve{fill:none;stroke:#c43d31;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.guide{stroke:#a4317a;stroke-width:2.2;stroke-dasharray:8 7}.point{fill:#0759b5;stroke:#fff;stroke-width:2}.tick{font:14px system-ui,sans-serif;fill:#364b68}.annotation{font:700 16px system-ui,sans-serif;fill:#20334f}</style>
+    <defs><clipPath id="practice-grid-4-clip"><rect x="62.0" y="34.0" width="620.0" height="340.0"/></clipPath></defs>
+    <rect x="62.0" y="34.0" width="620.0" height="340.0" class="plot-bg"/>
+    <g><line x1="62.00" y1="34.0" x2="62.00" y2="374.0" class="grid"/><text x="62.00" y="223.00" text-anchor="middle" class="tick">-10</text><line x1="217.00" y1="34.0" x2="217.00" y2="374.0" class="grid"/><text x="217.00" y="223.00" text-anchor="middle" class="tick">-5</text><line x1="372.00" y1="34.0" x2="372.00" y2="374.0" class="axis"/><line x1="527.00" y1="34.0" x2="527.00" y2="374.0" class="grid"/><text x="527.00" y="223.00" text-anchor="middle" class="tick">5</text><line x1="682.00" y1="34.0" x2="682.00" y2="374.0" class="grid"/><text x="682.00" y="223.00" text-anchor="middle" class="tick">10</text><line x1="62.0" y1="374.00" x2="682.0" y2="374.00" class="grid"/><text x="364.00" y="379.00" text-anchor="end" class="tick">-10</text><line x1="62.0" y1="289.00" x2="682.0" y2="289.00" class="grid"/><text x="364.00" y="294.00" text-anchor="end" class="tick">-5</text><line x1="62.0" y1="204.00" x2="682.0" y2="204.00" class="axis"/><line x1="62.0" y1="119.00" x2="682.0" y2="119.00" class="grid"/><text x="364.00" y="124.00" text-anchor="end" class="tick">5</text><line x1="62.0" y1="34.00" x2="682.0" y2="34.00" class="grid"/><text x="364.00" y="39.00" text-anchor="end" class="tick">10</text></g>
+    <g clip-path="url(#practice-grid-4-clip)"></g>
+    <g></g>
+    <text x="674.0" y="194.00" text-anchor="end" class="annotation">x</text>
+    <text x="383.00" y="53.0" class="annotation">y</text>
+  </svg>
+  <figcaption id="practice-grid-4-caption">Graphing workspace for Problem 4.</figcaption>
+  <p class="diagram-description" id="practice-grid-4-long">Grid values are labeled on both axes. The horizontal x-axis and vertical y-axis run from negative ten to ten and meet at the origin. Use the grid to sketch the requested conic.</p>
+</figure></div>
+</section><section class="problem-card" data-problem="5" aria-labelledby="practice-problem-5-heading">
+  <h3 id="practice-problem-5-heading" data-read="Problem 5">Problem 5</h3>
+  <div class="math-display" role="math" aria-label="Problem 5. x squared plus y squared minus eight x plus four y minus five equals zero." data-read="Problem 5. x squared plus y squared minus eight x plus four y minus five equals zero.">\[ x^2+y^2-8x+4y-5=0 \]</div>
+  <div class="answer-space" role="group" aria-label="Classification and algebra work space for Conic Sections problem 5." data-read="Classification and algebra work space for Conic Sections problem 5." style="min-height:5rem;"></div>
+  <div class="graph-workspace"><figure class="conic-figure compact" aria-labelledby="practice-grid-5-caption" aria-describedby="practice-grid-5-long" data-read="Blank coordinate grid for sketching the conic in practice problem 5.">
+  <svg viewBox="0 0 720 420" role="img" aria-labelledby="practice-grid-5-title practice-grid-5-desc" xmlns="http://www.w3.org/2000/svg">
+    <title id="practice-grid-5-title">Graphing workspace for problem 5</title>
+    <desc id="practice-grid-5-desc">Blank coordinate grid for sketching the conic in practice problem 5.</desc>
+    <style>.plot-bg{fill:#fff;stroke:#94a8c0;stroke-width:2}.grid{stroke:#d9e2ec;stroke-width:1}.axis{stroke:#22354f;stroke-width:2.4}.curve{fill:none;stroke:#c43d31;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.guide{stroke:#a4317a;stroke-width:2.2;stroke-dasharray:8 7}.point{fill:#0759b5;stroke:#fff;stroke-width:2}.tick{font:14px system-ui,sans-serif;fill:#364b68}.annotation{font:700 16px system-ui,sans-serif;fill:#20334f}</style>
+    <defs><clipPath id="practice-grid-5-clip"><rect x="62.0" y="34.0" width="620.0" height="340.0"/></clipPath></defs>
+    <rect x="62.0" y="34.0" width="620.0" height="340.0" class="plot-bg"/>
+    <g><line x1="62.00" y1="34.0" x2="62.00" y2="374.0" class="grid"/><text x="62.00" y="223.00" text-anchor="middle" class="tick">-10</text><line x1="217.00" y1="34.0" x2="217.00" y2="374.0" class="grid"/><text x="217.00" y="223.00" text-anchor="middle" class="tick">-5</text><line x1="372.00" y1="34.0" x2="372.00" y2="374.0" class="axis"/><line x1="527.00" y1="34.0" x2="527.00" y2="374.0" class="grid"/><text x="527.00" y="223.00" text-anchor="middle" class="tick">5</text><line x1="682.00" y1="34.0" x2="682.00" y2="374.0" class="grid"/><text x="682.00" y="223.00" text-anchor="middle" class="tick">10</text><line x1="62.0" y1="374.00" x2="682.0" y2="374.00" class="grid"/><text x="364.00" y="379.00" text-anchor="end" class="tick">-10</text><line x1="62.0" y1="289.00" x2="682.0" y2="289.00" class="grid"/><text x="364.00" y="294.00" text-anchor="end" class="tick">-5</text><line x1="62.0" y1="204.00" x2="682.0" y2="204.00" class="axis"/><line x1="62.0" y1="119.00" x2="682.0" y2="119.00" class="grid"/><text x="364.00" y="124.00" text-anchor="end" class="tick">5</text><line x1="62.0" y1="34.00" x2="682.0" y2="34.00" class="grid"/><text x="364.00" y="39.00" text-anchor="end" class="tick">10</text></g>
+    <g clip-path="url(#practice-grid-5-clip)"></g>
+    <g></g>
+    <text x="674.0" y="194.00" text-anchor="end" class="annotation">x</text>
+    <text x="383.00" y="53.0" class="annotation">y</text>
+  </svg>
+  <figcaption id="practice-grid-5-caption">Graphing workspace for Problem 5.</figcaption>
+  <p class="diagram-description" id="practice-grid-5-long">Grid values are labeled on both axes. The horizontal x-axis and vertical y-axis run from negative ten to ten and meet at the origin. Use the grid to sketch the requested conic.</p>
+</figure></div>
+</section><section class="problem-card" data-problem="6" aria-labelledby="practice-problem-6-heading">
+  <h3 id="practice-problem-6-heading" data-read="Problem 6">Problem 6</h3>
+  <div class="math-display" role="math" aria-label="Problem 6. the quantity x minus three squared over sixteen, plus the quantity y plus four squared over twenty-five, equals one." data-read="Problem 6. the quantity x minus three squared over sixteen, plus the quantity y plus four squared over twenty-five, equals one.">\[ \frac{(x-3)^2}{16}+\frac{(y+4)^2}{25}=1 \]</div>
+  <div class="answer-space" role="group" aria-label="Classification and algebra work space for Conic Sections problem 6." data-read="Classification and algebra work space for Conic Sections problem 6." style="min-height:5rem;"></div>
+  <div class="graph-workspace"><figure class="conic-figure compact" aria-labelledby="practice-grid-6-caption" aria-describedby="practice-grid-6-long" data-read="Blank coordinate grid for sketching the conic in practice problem 6.">
+  <svg viewBox="0 0 720 420" role="img" aria-labelledby="practice-grid-6-title practice-grid-6-desc" xmlns="http://www.w3.org/2000/svg">
+    <title id="practice-grid-6-title">Graphing workspace for problem 6</title>
+    <desc id="practice-grid-6-desc">Blank coordinate grid for sketching the conic in practice problem 6.</desc>
+    <style>.plot-bg{fill:#fff;stroke:#94a8c0;stroke-width:2}.grid{stroke:#d9e2ec;stroke-width:1}.axis{stroke:#22354f;stroke-width:2.4}.curve{fill:none;stroke:#c43d31;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.guide{stroke:#a4317a;stroke-width:2.2;stroke-dasharray:8 7}.point{fill:#0759b5;stroke:#fff;stroke-width:2}.tick{font:14px system-ui,sans-serif;fill:#364b68}.annotation{font:700 16px system-ui,sans-serif;fill:#20334f}</style>
+    <defs><clipPath id="practice-grid-6-clip"><rect x="62.0" y="34.0" width="620.0" height="340.0"/></clipPath></defs>
+    <rect x="62.0" y="34.0" width="620.0" height="340.0" class="plot-bg"/>
+    <g><line x1="62.00" y1="34.0" x2="62.00" y2="374.0" class="grid"/><text x="62.00" y="223.00" text-anchor="middle" class="tick">-10</text><line x1="217.00" y1="34.0" x2="217.00" y2="374.0" class="grid"/><text x="217.00" y="223.00" text-anchor="middle" class="tick">-5</text><line x1="372.00" y1="34.0" x2="372.00" y2="374.0" class="axis"/><line x1="527.00" y1="34.0" x2="527.00" y2="374.0" class="grid"/><text x="527.00" y="223.00" text-anchor="middle" class="tick">5</text><line x1="682.00" y1="34.0" x2="682.00" y2="374.0" class="grid"/><text x="682.00" y="223.00" text-anchor="middle" class="tick">10</text><line x1="62.0" y1="374.00" x2="682.0" y2="374.00" class="grid"/><text x="364.00" y="379.00" text-anchor="end" class="tick">-10</text><line x1="62.0" y1="289.00" x2="682.0" y2="289.00" class="grid"/><text x="364.00" y="294.00" text-anchor="end" class="tick">-5</text><line x1="62.0" y1="204.00" x2="682.0" y2="204.00" class="axis"/><line x1="62.0" y1="119.00" x2="682.0" y2="119.00" class="grid"/><text x="364.00" y="124.00" text-anchor="end" class="tick">5</text><line x1="62.0" y1="34.00" x2="682.0" y2="34.00" class="grid"/><text x="364.00" y="39.00" text-anchor="end" class="tick">10</text></g>
+    <g clip-path="url(#practice-grid-6-clip)"></g>
+    <g></g>
+    <text x="674.0" y="194.00" text-anchor="end" class="annotation">x</text>
+    <text x="383.00" y="53.0" class="annotation">y</text>
+  </svg>
+  <figcaption id="practice-grid-6-caption">Graphing workspace for Problem 6.</figcaption>
+  <p class="diagram-description" id="practice-grid-6-long">Grid values are labeled on both axes. The horizontal x-axis and vertical y-axis run from negative ten to ten and meet at the origin. Use the grid to sketch the requested conic.</p>
+</figure></div>
+</section><section class="problem-card" data-problem="7" aria-labelledby="practice-problem-7-heading">
+  <h3 id="practice-problem-7-heading" data-read="Problem 7">Problem 7</h3>
+  <div class="math-display" role="math" aria-label="Problem 7. x squared over nine minus y squared over four equals one." data-read="Problem 7. x squared over nine minus y squared over four equals one.">\[ \frac{x^2}{9}-\frac{y^2}{4}=1 \]</div>
+  <div class="answer-space" role="group" aria-label="Classification and algebra work space for Conic Sections problem 7." data-read="Classification and algebra work space for Conic Sections problem 7." style="min-height:5rem;"></div>
+  <div class="graph-workspace"><figure class="conic-figure compact" aria-labelledby="practice-grid-7-caption" aria-describedby="practice-grid-7-long" data-read="Blank coordinate grid for sketching the conic in practice problem 7.">
+  <svg viewBox="0 0 720 420" role="img" aria-labelledby="practice-grid-7-title practice-grid-7-desc" xmlns="http://www.w3.org/2000/svg">
+    <title id="practice-grid-7-title">Graphing workspace for problem 7</title>
+    <desc id="practice-grid-7-desc">Blank coordinate grid for sketching the conic in practice problem 7.</desc>
+    <style>.plot-bg{fill:#fff;stroke:#94a8c0;stroke-width:2}.grid{stroke:#d9e2ec;stroke-width:1}.axis{stroke:#22354f;stroke-width:2.4}.curve{fill:none;stroke:#c43d31;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.guide{stroke:#a4317a;stroke-width:2.2;stroke-dasharray:8 7}.point{fill:#0759b5;stroke:#fff;stroke-width:2}.tick{font:14px system-ui,sans-serif;fill:#364b68}.annotation{font:700 16px system-ui,sans-serif;fill:#20334f}</style>
+    <defs><clipPath id="practice-grid-7-clip"><rect x="62.0" y="34.0" width="620.0" height="340.0"/></clipPath></defs>
+    <rect x="62.0" y="34.0" width="620.0" height="340.0" class="plot-bg"/>
+    <g><line x1="62.00" y1="34.0" x2="62.00" y2="374.0" class="grid"/><text x="62.00" y="223.00" text-anchor="middle" class="tick">-10</text><line x1="217.00" y1="34.0" x2="217.00" y2="374.0" class="grid"/><text x="217.00" y="223.00" text-anchor="middle" class="tick">-5</text><line x1="372.00" y1="34.0" x2="372.00" y2="374.0" class="axis"/><line x1="527.00" y1="34.0" x2="527.00" y2="374.0" class="grid"/><text x="527.00" y="223.00" text-anchor="middle" class="tick">5</text><line x1="682.00" y1="34.0" x2="682.00" y2="374.0" class="grid"/><text x="682.00" y="223.00" text-anchor="middle" class="tick">10</text><line x1="62.0" y1="374.00" x2="682.0" y2="374.00" class="grid"/><text x="364.00" y="379.00" text-anchor="end" class="tick">-10</text><line x1="62.0" y1="289.00" x2="682.0" y2="289.00" class="grid"/><text x="364.00" y="294.00" text-anchor="end" class="tick">-5</text><line x1="62.0" y1="204.00" x2="682.0" y2="204.00" class="axis"/><line x1="62.0" y1="119.00" x2="682.0" y2="119.00" class="grid"/><text x="364.00" y="124.00" text-anchor="end" class="tick">5</text><line x1="62.0" y1="34.00" x2="682.0" y2="34.00" class="grid"/><text x="364.00" y="39.00" text-anchor="end" class="tick">10</text></g>
+    <g clip-path="url(#practice-grid-7-clip)"></g>
+    <g></g>
+    <text x="674.0" y="194.00" text-anchor="end" class="annotation">x</text>
+    <text x="383.00" y="53.0" class="annotation">y</text>
+  </svg>
+  <figcaption id="practice-grid-7-caption">Graphing workspace for Problem 7.</figcaption>
+  <p class="diagram-description" id="practice-grid-7-long">Grid values are labeled on both axes. The horizontal x-axis and vertical y-axis run from negative ten to ten and meet at the origin. Use the grid to sketch the requested conic.</p>
+</figure></div>
+</section><section class="problem-card" data-problem="8" aria-labelledby="practice-problem-8-heading">
+  <h3 id="practice-problem-8-heading" data-read="Problem 8">Problem 8</h3>
+  <div class="math-display" role="math" aria-label="Problem 8. x squared plus three x equals three y minus six." data-read="Problem 8. x squared plus three x equals three y minus six.">\[ x^2+3x=3y-6 \]</div>
+  <div class="answer-space" role="group" aria-label="Classification and algebra work space for Conic Sections problem 8." data-read="Classification and algebra work space for Conic Sections problem 8." style="min-height:5rem;"></div>
+  <div class="graph-workspace"><figure class="conic-figure compact" aria-labelledby="practice-grid-8-caption" aria-describedby="practice-grid-8-long" data-read="Blank coordinate grid for sketching the conic in practice problem 8.">
+  <svg viewBox="0 0 720 420" role="img" aria-labelledby="practice-grid-8-title practice-grid-8-desc" xmlns="http://www.w3.org/2000/svg">
+    <title id="practice-grid-8-title">Graphing workspace for problem 8</title>
+    <desc id="practice-grid-8-desc">Blank coordinate grid for sketching the conic in practice problem 8.</desc>
+    <style>.plot-bg{fill:#fff;stroke:#94a8c0;stroke-width:2}.grid{stroke:#d9e2ec;stroke-width:1}.axis{stroke:#22354f;stroke-width:2.4}.curve{fill:none;stroke:#c43d31;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.guide{stroke:#a4317a;stroke-width:2.2;stroke-dasharray:8 7}.point{fill:#0759b5;stroke:#fff;stroke-width:2}.tick{font:14px system-ui,sans-serif;fill:#364b68}.annotation{font:700 16px system-ui,sans-serif;fill:#20334f}</style>
+    <defs><clipPath id="practice-grid-8-clip"><rect x="62.0" y="34.0" width="620.0" height="340.0"/></clipPath></defs>
+    <rect x="62.0" y="34.0" width="620.0" height="340.0" class="plot-bg"/>
+    <g><line x1="62.00" y1="34.0" x2="62.00" y2="374.0" class="grid"/><text x="62.00" y="223.00" text-anchor="middle" class="tick">-10</text><line x1="217.00" y1="34.0" x2="217.00" y2="374.0" class="grid"/><text x="217.00" y="223.00" text-anchor="middle" class="tick">-5</text><line x1="372.00" y1="34.0" x2="372.00" y2="374.0" class="axis"/><line x1="527.00" y1="34.0" x2="527.00" y2="374.0" class="grid"/><text x="527.00" y="223.00" text-anchor="middle" class="tick">5</text><line x1="682.00" y1="34.0" x2="682.00" y2="374.0" class="grid"/><text x="682.00" y="223.00" text-anchor="middle" class="tick">10</text><line x1="62.0" y1="374.00" x2="682.0" y2="374.00" class="grid"/><text x="364.00" y="379.00" text-anchor="end" class="tick">-10</text><line x1="62.0" y1="289.00" x2="682.0" y2="289.00" class="grid"/><text x="364.00" y="294.00" text-anchor="end" class="tick">-5</text><line x1="62.0" y1="204.00" x2="682.0" y2="204.00" class="axis"/><line x1="62.0" y1="119.00" x2="682.0" y2="119.00" class="grid"/><text x="364.00" y="124.00" text-anchor="end" class="tick">5</text><line x1="62.0" y1="34.00" x2="682.0" y2="34.00" class="grid"/><text x="364.00" y="39.00" text-anchor="end" class="tick">10</text></g>
+    <g clip-path="url(#practice-grid-8-clip)"></g>
+    <g></g>
+    <text x="674.0" y="194.00" text-anchor="end" class="annotation">x</text>
+    <text x="383.00" y="53.0" class="annotation">y</text>
+  </svg>
+  <figcaption id="practice-grid-8-caption">Graphing workspace for Problem 8.</figcaption>
+  <p class="diagram-description" id="practice-grid-8-long">Grid values are labeled on both axes. The horizontal x-axis and vertical y-axis run from negative ten to ten and meet at the origin. Use the grid to sketch the requested conic.</p>
+</figure></div>
+</section><section class="problem-card" data-problem="9" aria-labelledby="practice-problem-9-heading">
+  <h3 id="practice-problem-9-heading" data-read="Problem 9">Problem 9</h3>
+  <div class="math-display" role="math" aria-label="Problem 9. x squared plus six x minus y squared equals seven." data-read="Problem 9. x squared plus six x minus y squared equals seven.">\[ x^2+6x-y^2=7 \]</div>
+  <div class="answer-space" role="group" aria-label="Classification and algebra work space for Conic Sections problem 9." data-read="Classification and algebra work space for Conic Sections problem 9." style="min-height:5rem;"></div>
+  <div class="graph-workspace"><figure class="conic-figure compact" aria-labelledby="practice-grid-9-caption" aria-describedby="practice-grid-9-long" data-read="Blank coordinate grid for sketching the conic in practice problem 9.">
+  <svg viewBox="0 0 720 420" role="img" aria-labelledby="practice-grid-9-title practice-grid-9-desc" xmlns="http://www.w3.org/2000/svg">
+    <title id="practice-grid-9-title">Graphing workspace for problem 9</title>
+    <desc id="practice-grid-9-desc">Blank coordinate grid for sketching the conic in practice problem 9.</desc>
+    <style>.plot-bg{fill:#fff;stroke:#94a8c0;stroke-width:2}.grid{stroke:#d9e2ec;stroke-width:1}.axis{stroke:#22354f;stroke-width:2.4}.curve{fill:none;stroke:#c43d31;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.guide{stroke:#a4317a;stroke-width:2.2;stroke-dasharray:8 7}.point{fill:#0759b5;stroke:#fff;stroke-width:2}.tick{font:14px system-ui,sans-serif;fill:#364b68}.annotation{font:700 16px system-ui,sans-serif;fill:#20334f}</style>
+    <defs><clipPath id="practice-grid-9-clip"><rect x="62.0" y="34.0" width="620.0" height="340.0"/></clipPath></defs>
+    <rect x="62.0" y="34.0" width="620.0" height="340.0" class="plot-bg"/>
+    <g><line x1="62.00" y1="34.0" x2="62.00" y2="374.0" class="grid"/><text x="62.00" y="223.00" text-anchor="middle" class="tick">-10</text><line x1="217.00" y1="34.0" x2="217.00" y2="374.0" class="grid"/><text x="217.00" y="223.00" text-anchor="middle" class="tick">-5</text><line x1="372.00" y1="34.0" x2="372.00" y2="374.0" class="axis"/><line x1="527.00" y1="34.0" x2="527.00" y2="374.0" class="grid"/><text x="527.00" y="223.00" text-anchor="middle" class="tick">5</text><line x1="682.00" y1="34.0" x2="682.00" y2="374.0" class="grid"/><text x="682.00" y="223.00" text-anchor="middle" class="tick">10</text><line x1="62.0" y1="374.00" x2="682.0" y2="374.00" class="grid"/><text x="364.00" y="379.00" text-anchor="end" class="tick">-10</text><line x1="62.0" y1="289.00" x2="682.0" y2="289.00" class="grid"/><text x="364.00" y="294.00" text-anchor="end" class="tick">-5</text><line x1="62.0" y1="204.00" x2="682.0" y2="204.00" class="axis"/><line x1="62.0" y1="119.00" x2="682.0" y2="119.00" class="grid"/><text x="364.00" y="124.00" text-anchor="end" class="tick">5</text><line x1="62.0" y1="34.00" x2="682.0" y2="34.00" class="grid"/><text x="364.00" y="39.00" text-anchor="end" class="tick">10</text></g>
+    <g clip-path="url(#practice-grid-9-clip)"></g>
+    <g></g>
+    <text x="674.0" y="194.00" text-anchor="end" class="annotation">x</text>
+    <text x="383.00" y="53.0" class="annotation">y</text>
+  </svg>
+  <figcaption id="practice-grid-9-caption">Graphing workspace for Problem 9.</figcaption>
+  <p class="diagram-description" id="practice-grid-9-long">Grid values are labeled on both axes. The horizontal x-axis and vertical y-axis run from negative ten to ten and meet at the origin. Use the grid to sketch the requested conic.</p>
+</figure></div>
+</section><section class="problem-card" data-problem="10" aria-labelledby="practice-problem-10-heading">
+  <h3 id="practice-problem-10-heading" data-read="Problem 10">Problem 10</h3>
+  <div class="math-display" role="math" aria-label="Problem 10. four x squared minus sixteen x plus nine y squared plus thirty-six y equals negative sixteen." data-read="Problem 10. four x squared minus sixteen x plus nine y squared plus thirty-six y equals negative sixteen.">\[ 4x^2-16x+9y^2+36y=-16 \]</div>
+  <div class="answer-space" role="group" aria-label="Classification and algebra work space for Conic Sections problem 10." data-read="Classification and algebra work space for Conic Sections problem 10." style="min-height:5rem;"></div>
+  <div class="graph-workspace"><figure class="conic-figure compact" aria-labelledby="practice-grid-10-caption" aria-describedby="practice-grid-10-long" data-read="Blank coordinate grid for sketching the conic in practice problem 10.">
+  <svg viewBox="0 0 720 420" role="img" aria-labelledby="practice-grid-10-title practice-grid-10-desc" xmlns="http://www.w3.org/2000/svg">
+    <title id="practice-grid-10-title">Graphing workspace for problem 10</title>
+    <desc id="practice-grid-10-desc">Blank coordinate grid for sketching the conic in practice problem 10.</desc>
+    <style>.plot-bg{fill:#fff;stroke:#94a8c0;stroke-width:2}.grid{stroke:#d9e2ec;stroke-width:1}.axis{stroke:#22354f;stroke-width:2.4}.curve{fill:none;stroke:#c43d31;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.guide{stroke:#a4317a;stroke-width:2.2;stroke-dasharray:8 7}.point{fill:#0759b5;stroke:#fff;stroke-width:2}.tick{font:14px system-ui,sans-serif;fill:#364b68}.annotation{font:700 16px system-ui,sans-serif;fill:#20334f}</style>
+    <defs><clipPath id="practice-grid-10-clip"><rect x="62.0" y="34.0" width="620.0" height="340.0"/></clipPath></defs>
+    <rect x="62.0" y="34.0" width="620.0" height="340.0" class="plot-bg"/>
+    <g><line x1="62.00" y1="34.0" x2="62.00" y2="374.0" class="grid"/><text x="62.00" y="223.00" text-anchor="middle" class="tick">-10</text><line x1="217.00" y1="34.0" x2="217.00" y2="374.0" class="grid"/><text x="217.00" y="223.00" text-anchor="middle" class="tick">-5</text><line x1="372.00" y1="34.0" x2="372.00" y2="374.0" class="axis"/><line x1="527.00" y1="34.0" x2="527.00" y2="374.0" class="grid"/><text x="527.00" y="223.00" text-anchor="middle" class="tick">5</text><line x1="682.00" y1="34.0" x2="682.00" y2="374.0" class="grid"/><text x="682.00" y="223.00" text-anchor="middle" class="tick">10</text><line x1="62.0" y1="374.00" x2="682.0" y2="374.00" class="grid"/><text x="364.00" y="379.00" text-anchor="end" class="tick">-10</text><line x1="62.0" y1="289.00" x2="682.0" y2="289.00" class="grid"/><text x="364.00" y="294.00" text-anchor="end" class="tick">-5</text><line x1="62.0" y1="204.00" x2="682.0" y2="204.00" class="axis"/><line x1="62.0" y1="119.00" x2="682.0" y2="119.00" class="grid"/><text x="364.00" y="124.00" text-anchor="end" class="tick">5</text><line x1="62.0" y1="34.00" x2="682.0" y2="34.00" class="grid"/><text x="364.00" y="39.00" text-anchor="end" class="tick">10</text></g>
+    <g clip-path="url(#practice-grid-10-clip)"></g>
+    <g></g>
+    <text x="674.0" y="194.00" text-anchor="end" class="annotation">x</text>
+    <text x="383.00" y="53.0" class="annotation">y</text>
+  </svg>
+  <figcaption id="practice-grid-10-caption">Graphing workspace for Problem 10.</figcaption>
+  <p class="diagram-description" id="practice-grid-10-long">Grid values are labeled on both axes. The horizontal x-axis and vertical y-axis run from negative ten to ten and meet at the origin. Use the grid to sketch the requested conic.</p>
+</figure></div>
+</section></div>
+  <a class="top-link" href="#top">Back to top</a>
+</article></main>
+  <footer data-read="End of handout.">End of handout.</footer>
+</div>
+  <script>
+    (function () {
+      function setupControls() {
+        const theme = document.getElementById('themeSelect');
+        const font = document.getElementById('fontSelect');
+        const descToggle = document.getElementById('descToggle');
+        const printButton = document.getElementById('printButton');
+        if (theme) {
+          theme.addEventListener('change', () => {
+            document.documentElement.dataset.theme = theme.value;
+          });
+        }
+        if (font) {
+          font.addEventListener('change', () => document.documentElement.style.setProperty('--font-scale', font.value));
+        }
+        if (descToggle) {
+          descToggle.addEventListener('change', () => document.documentElement.classList.toggle('show-descriptions', descToggle.checked));
+        }
+        if (printButton) printButton.addEventListener('click', () => window.print());
+      }
+
+      function setupReader() {
+        const readAllButton = document.getElementById('readAllButton');
+        const readSectionButton = document.getElementById('readSectionButton');
+        const previousLineButton = document.getElementById('previousLineButton');
+        const nextLineButton = document.getElementById('nextLineButton');
+        const pauseButton = document.getElementById('pauseButton');
+        const voiceSelect = document.getElementById('voiceSelect');
+        const voiceRate = document.getElementById('voiceRate');
+        const statusLabel = document.getElementById('readerStatusLabel');
+        const currentText = document.getElementById('readerCurrentText');
+        const progressText = document.getElementById('readerProgressText');
+        const supportNotice = document.getElementById('speechSupportNotice');
+        const supported = 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
+        const controls = [readAllButton, readSectionButton, previousLineButton, nextLineButton, pauseButton, voiceSelect, voiceRate].filter(Boolean);
+        const state = {
+          lines: Array.from(document.querySelectorAll('[data-read]')).map(element => ({ element, text: element.dataset.read })).filter(line => line.text),
+          index: 0,
+          active: false,
+          paused: false,
+          token: 0,
+          currentElement: null
+        };
+
+        function setStatus(label, text) {
+          if (statusLabel) statusLabel.textContent = label;
+          if (currentText) currentText.textContent = text;
+          if (progressText) progressText.textContent = `Line ${state.active ? state.index + 1 : 0} of ${state.lines.length}`;
+        }
+
+        function updateButtons() {
+          const canRead = supported && state.lines.length > 0;
+          if (readAllButton) readAllButton.disabled = !canRead;
+          if (readSectionButton) readSectionButton.disabled = !canRead;
+          if (previousLineButton) previousLineButton.disabled = !canRead;
+          if (nextLineButton) nextLineButton.disabled = !canRead;
+          if (pauseButton) {
+            pauseButton.disabled = !canRead || !state.active;
+            pauseButton.textContent = state.paused ? 'Resume' : 'Pause';
+            pauseButton.setAttribute('aria-label', state.paused ? 'Resume read aloud' : 'Pause read aloud');
+            pauseButton.setAttribute('aria-pressed', String(state.paused));
+          }
+          if (voiceSelect) voiceSelect.disabled = !supported;
+          if (voiceRate) voiceRate.disabled = !supported;
+        }
+
+        function voiceKey(voice) {
+          return `${voice.name}||${voice.lang}`;
+        }
+
+        function getSelectedVoice() {
+          if (!voiceSelect || !voiceSelect.value) return null;
+          return window.speechSynthesis.getVoices().find(voice => voiceKey(voice) === voiceSelect.value) || null;
+        }
+
+        function populateVoices() {
+          if (!supported || !voiceSelect) return;
+          const previous = voiceSelect.value;
+          const voices = window.speechSynthesis.getVoices().filter(voice => /^en([_-]|$)/i.test(voice.lang));
+          voiceSelect.innerHTML = '<option value="">Browser default voice</option>';
+          voices.forEach(voice => {
+            const option = document.createElement('option');
+            option.value = voiceKey(voice);
+            option.textContent = `${voice.name} (${voice.lang})`;
+            voiceSelect.appendChild(option);
+          });
+
+          if (previous && voices.some(voice => voiceKey(voice) === previous)) {
+            voiceSelect.value = previous;
+            return;
+          }
+
+          const preferred = voices.find(voice => /natural|jenny|aria|ava|samantha|google us english|online/i.test(voice.name))
+            || voices.find(voice => /^en[-_]US/i.test(voice.lang))
+            || voices[0];
+          if (preferred) voiceSelect.value = voiceKey(preferred);
+        }
+
+        function clearHighlight() {
+          if (state.currentElement) state.currentElement.classList.remove('is-reading');
+          state.currentElement = null;
+        }
+
+        function highlightLine(line) {
+          clearHighlight();
+          state.currentElement = line.element;
+          state.currentElement.classList.add('is-reading');
+          state.currentElement.scrollIntoView({
+            block: 'center',
+            behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
+          });
+        }
+
+        function finishReading() {
+          state.active = false;
+          state.paused = false;
+          setStatus('Finished reading.', 'The read aloud sequence has finished.');
+          updateButtons();
+        }
+
+        function speakLine(index, autoContinue) {
+          if (!supported || !state.lines.length) return;
+          state.token += 1;
+          const token = state.token;
+          const nextIndex = Math.max(0, Math.min(index, state.lines.length - 1));
+          const line = state.lines[nextIndex];
+          window.speechSynthesis.cancel();
+          state.index = nextIndex;
+          state.active = true;
+          state.paused = false;
+          highlightLine(line);
+          setStatus(`Reading line ${state.index + 1} of ${state.lines.length}.`, line.text);
+
+          const utterance = new SpeechSynthesisUtterance(line.text);
+          utterance.lang = 'en-US';
+          utterance.rate = Number(voiceRate && voiceRate.value) || 0.9;
+          utterance.pitch = 1;
+          const selectedVoice = getSelectedVoice();
+          if (selectedVoice) utterance.voice = selectedVoice;
+
+          utterance.onend = () => {
+            if (token !== state.token) return;
+            if (autoContinue && state.index < state.lines.length - 1) {
+              speakLine(state.index + 1, true);
+            } else {
+              finishReading();
+            }
+          };
+          utterance.onerror = () => {
+            if (token !== state.token) return;
+            state.active = false;
+            state.paused = false;
+            setStatus('Read aloud stopped.', 'The browser stopped speech playback before this line finished.');
+            updateButtons();
+          };
+
+          updateButtons();
+          window.speechSynthesis.speak(utterance);
+        }
+
+        function findCurrentVisibleLine() {
+          const voiceHeader = document.querySelector('.voice-header');
+          const stickyOffset = voiceHeader ? voiceHeader.getBoundingClientRect().height + 18 : 90;
+          const upperBand = Math.max(stickyOffset, window.innerHeight * 0.16);
+          let bestIndex = 0;
+          let bestDistance = Infinity;
+          state.lines.forEach((line, index) => {
+            const rect = line.element.getBoundingClientRect();
+            if (rect.bottom < 0 || rect.top > window.innerHeight) return;
+            const distance = Math.abs(rect.top - upperBand);
+            if (distance < bestDistance) {
+              bestDistance = distance;
+              bestIndex = index;
+            }
+          });
+          return bestIndex;
+        }
+
+        if (supportNotice) supportNotice.hidden = supported;
+        setStatus('Ready to read.', 'Choose Read from start or Read current section.');
+        updateButtons();
+
+        if (!supported) {
+          setStatus('Speech playback unavailable.', 'The handout remains usable with screen readers, visible text, MathJax math, and diagram descriptions.');
+          controls.forEach(control => { control.disabled = true; });
+          return;
+        }
+
+        populateVoices();
+        window.speechSynthesis.addEventListener('voiceschanged', populateVoices);
+
+        if (readAllButton) readAllButton.addEventListener('click', () => speakLine(0, true));
+        if (readSectionButton) readSectionButton.addEventListener('click', () => speakLine(findCurrentVisibleLine(), true));
+        if (previousLineButton) previousLineButton.addEventListener('click', () => speakLine(Math.max(0, state.index - 1), true));
+        if (nextLineButton) nextLineButton.addEventListener('click', () => speakLine(Math.min(state.lines.length - 1, state.index + 1), true));
+        if (pauseButton) {
+          pauseButton.addEventListener('click', () => {
+            if (!state.active) return;
+            if (state.paused) {
+              window.speechSynthesis.resume();
+              state.paused = false;
+              setStatus(`Reading line ${state.index + 1} of ${state.lines.length}.`, state.lines[state.index].text);
+            } else {
+              window.speechSynthesis.pause();
+              state.paused = true;
+              setStatus(`Paused on line ${state.index + 1} of ${state.lines.length}.`, state.lines[state.index].text);
+            }
+            updateButtons();
+          });
+        }
+        window.addEventListener('beforeunload', () => window.speechSynthesis.cancel());
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        setupControls();
+        setupReader();
+      });
+    })();
+  </script>
+
+
+</body>
+</html>
